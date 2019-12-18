@@ -1,0 +1,59 @@
+import { Component, OnInit } from '@angular/core';
+import * as firebase from 'firebase';
+import {AngularFireAuth} from 'angularfire2/auth';
+import { FormBuilder, FormGroup, Validator, Validators} from '@angular/forms';
+import {AuthsService} from '../auths.service';
+import {Router} from '@angular/router';
+
+
+
+
+
+@Component({
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
+})
+export class LoginComponent  {
+
+  loginForm: FormGroup;
+  submitted = false;
+  success = false;
+  email: string;
+  password: string;
+
+  constructor(  private afAuth: AngularFireAuth,
+                private formBuilder: FormBuilder,
+                private authService: AuthsService
+                ) {
+    this.loginForm = this.formBuilder.group({
+      email: ['', Validators.required, Validators.email],
+      password: ['', [Validators.required, Validators.minLength(6)]]
+
+    });
+  }
+
+  onSubmit() {
+    this.submitted = true;
+    if (this.loginForm.invalid) {
+      return;
+    }
+    this.success = true;
+    this.authService.loginUser( this.loginForm.controls.email.value , this.loginForm.controls.password.value);
+    console.log(this.loginForm.controls.email.value);
+}
+
+
+  googleLogin() {
+    this.authService.googleLoginService();
+    // this.afAuth.auth.signInWithRedirect(new firebase.auth.GoogleAuthProvider())
+    // .then( () => {
+    //   // console.log('works wella');
+    //   this.router.navigate(['/dashboard']);
+    // });
+  }
+
+  forgotPassword() {
+    this.authService.sendPasswordResetMail(this.email);
+  }
+}

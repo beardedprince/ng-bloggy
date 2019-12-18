@@ -1,0 +1,52 @@
+<div class="container">
+<div class="row">
+  <div class="col-md-6 col-sm-12 offset-md-3 border rounded my-5">
+    <form [formGroup]="registerForm" (ngSubmit)="register()" >
+        <div class="alert alert-success my-2" *ngIf = "success"> Registration Successful</div>
+
+        <!-- <div class="form-group my-3 ">
+          <label for="name">First Name</label>
+          <input type="email" class="form-control" formControlName = "firstName" id="firstName" placeholder = "Enter your first name " [ngClass]="{ 'is-invalid': submitted && registerForm.controls.firstName.errors }">
+            <div *ngIf = "submitted && registerForm.controls.firstName.errors" class="invalid-feedback">
+              <div *ngIf = "registerForm.controls.firstName.errors.required">This field is required   </div>  
+            </div>
+        </div>
+
+        <div class="form-group ">
+          <label for="name">Last Name</label>
+          <input type="email" class="form-control" formControlName = "lastName" id="lastName" placeholder = "Enter your last name here" [ngClass]="{ 'is-invalid': submitted && registerForm.controls.lastName.errors }">
+            <div *ngIf = "submitted && registerForm.controls.lastName.errors" class="invalid-feedback">
+              <div *ngIf = "registerForm.controls.lastName.errors.required">This field is required   </div>
+            </div>
+        </div> -->
+      
+      
+        <div class="form-group ">
+        <label for="name">Email</label>
+        <input type="email" class="form-control" formControlName = "email" id="email" placeholder = "Enter your email here" [ngClass]="{ 'is-invalid': submitted && registerForm.controls.email.errors }">
+          <div *ngIf = "submitted && registerForm.controls.email.errors" class="invalid-feedback">
+            <div *ngIf = "registerForm.controls.email.errors.required">This field is required   </div>
+            <div *ngIf = "registerForm.controls.email.errors.email">Invalid email pattern   </div>
+
+          </div>
+      </div>
+
+      <div class="form-group ">
+          <label for="name">Password</label>
+          <input type="password" class="form-control" formControlName = "password" id="password" placeholder = "Enter your password here" [ngClass]="{ 'is-invalid': submitted && registerForm.controls.password.errors }">
+            <div *ngIf = "submitted && registerForm.controls.password.errors" class=" invalid-feedback ">
+              <div *ngIf = "registerForm.controls.password.errors.required">Password is required   </div>
+              <div *ngIf = "registerForm.controls.password.errors.minlength">Password must be at least 6 characters   </div>
+
+            </div>
+        </div>
+
+        <button class="btn btn-info btn-block mb-3" type="submit"> Register</button>
+
+    </form>
+     
+    <!-- <span> Password: {{registerForm.controls.password.value}} </span> -->
+  
+  
+</div>
+</div>
