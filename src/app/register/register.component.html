@@ -1,8 +1,10 @@
+<app-navbar></app-navbar>
 <div class="container">
 <div class="row">
-  <div class="col-md-6 col-sm-12 offset-md-3 border rounded my-5">
+  <div class="col-md-6 col-sm-12 offset-md-3 border rounded my-5 shadow-sm ">
     <form [formGroup]="registerForm" (ngSubmit)="register()" >
-        <div class="alert alert-success my-2" *ngIf = "success"> Registration Successful</div>
+        <div class="alert alert-success my-2" *ngIf = "success" > Registration Successful</div>
+        <div class="alert alert-success my-2"  *ngIf = "registerForm.errors"> Username and Paswword is invalid</div>
 
         <!-- <div class="form-group my-3 ">
           <label for="name">First Name</label>
@@ -21,7 +23,7 @@
         </div> -->
       
       
-        <div class="form-group ">
+        <div class="form-group my-3">
         <label for="name">Email</label>
         <input type="email" class="form-control" formControlName = "email" id="email" placeholder = "Enter your email here" [ngClass]="{ 'is-invalid': submitted && registerForm.controls.email.errors }">
           <div *ngIf = "submitted && registerForm.controls.email.errors" class="invalid-feedback">
@@ -31,17 +33,19 @@
           </div>
       </div>
 
-      <div class="form-group ">
+      <div class="form-group my-3 ">
           <label for="name">Password</label>
           <input type="password" class="form-control" formControlName = "password" id="password" placeholder = "Enter your password here" [ngClass]="{ 'is-invalid': submitted && registerForm.controls.password.errors }">
             <div *ngIf = "submitted && registerForm.controls.password.errors" class=" invalid-feedback ">
               <div *ngIf = "registerForm.controls.password.errors.required">Password is required   </div>
-              <div *ngIf = "registerForm.controls.password.errors.minlength">Password must be at least 6 characters   </div>
+              <div *ngIf = "registerForm.controls.password.errors.minlength">Password must be at least {{registerForm.controls.password.errors.minlength.requiredLength}}  characters   </div>
 
             </div>
         </div>
 
         <button class="btn btn-info btn-block mb-3" type="submit"> Register</button>
+        <p class="text-center py-2"> Already registered? <a routerLink = "/login">Sign in</a>   </p>
+
 
     </form>
      

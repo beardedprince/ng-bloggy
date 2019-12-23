@@ -1,17 +1,42 @@
+<app-navbar></app-navbar>
 <div class="container">
-<nav class="navbar navbar-expand bg-dark">
-<span class="navbar-brand">Ng-Auths</span>
-<ul class="navbar-nav ml-auto">
-    <li class="nav-item px-2" routerLinkActive = "active" *ngIf = "user">
-        <a (click)="logout()" >Logout</a>
-    </li>
-</ul>
-<div>
-
-</div>
-</nav>
+ welcome back {{user.displayName}}
 
 <section>
-    welcome back {{user.displayName}}
+<div class="row">
+    <div class="col-md-3 ">
+            <div class="card" >
+                    <div class="card-header">
+                     <p>Dashboard Manager</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item"><i class="fa fa-user pr-3"></i> Profile</li>
+                      <li class="list-group-item"><i class="fa fa-edit pr-3"></i> Posts</li>
+                      <li class="list-group-item"> <i class="fa fa-poll pr-3"></i> Polls</li>
+                    </ul>
+                  </div>
+    </div>
+    <div class="col-md-8 offset-md-1 border ">
+        <h5> Write your post</h5>
+        <form [formGroup]="postForm" (ngSubmit)="submitPost()"> 
+            <div class="alert alert-success my-2" *ngIf = "success"> login Successful</div>
+
+            <div class="form-group">
+                <label for=""></label>
+                <input type="text" name="title" id="title" class="form-control" formControlName = "postTitle" placeholder="Post Title">
+                <div *ngIf = "submitted && postForm.controls.postTitle.errors" class="text-danger">
+                  <div *ngIf = "postForm.controls.postTitle.errors.required">Post title is required </div>
+                </div>
+              </div>
+              <textarea name="post" id="post" class="form-control" formControlName="postBody" placeholder="enter post contents here"></textarea>
+              <div *ngIf = "submitted && postForm.controls.postBody.errors" class="text-danger">
+                  <div *ngIf = "postForm.controls.postBody.errors.required">Post content is also required </div>
+                </div>
+              <button class="btn btn-info my-3" type = "submit">Send Post</button>
+        </form>
+
+    </div>
+</div>
+   
 </section>
 </div>
