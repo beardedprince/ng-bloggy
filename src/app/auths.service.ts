@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
+
 import * as firebase from 'firebase/app';
 import { auth } from 'firebase/app';
 import {Router} from '@angular/router';
+import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 
 
 @Injectable({
@@ -10,8 +12,9 @@ import {Router} from '@angular/router';
 })
 export class AuthsService {
 
-  constructor(private afAuth: AngularFireAuth, private router: Router) { }
 
+  constructor(private afAuth: AngularFireAuth, private router: Router, private db: AngularFireDatabase) { }
+  postList: AngularFireList<any>;
   // Login user
   loginUser(email: string, password: string) {
     this.afAuth
@@ -57,6 +60,26 @@ export class AuthsService {
     .then( () => {
       // console.log('works wella');
       this.router.navigate(['/dashboard']);
+    });
+  }
+
+  logOutUser() {
+    this.afAuth.auth.signOut()
+    .then(value => {
+      console.log('user logged out successfully');
+      this.router.navigate(['/']);
+    });
+  }
+
+  getPost() {
+    this.postList = this.db.list('posts');
+    return this.postList.snapshotChanges();
+  }
+
+  sendPost(posts) {
+    this.postList.push({
+      postTitle: posts.postTitle,
+      postBody: posts.postBody
     });
   }
 

@@ -16,6 +16,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { HomeComponent } from './home/home.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 
@@ -28,7 +29,8 @@ import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.compone
     DashboardComponent,
     HomeComponent,
     NotfoundComponent,
-    ForgotpasswordComponent
+    ForgotpasswordComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
