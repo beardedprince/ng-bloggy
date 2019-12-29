@@ -1,15 +1,22 @@
 import { Component, OnInit } from '@angular/core';
+import { DashboardComponent } from '../dashboard/dashboard.component';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent  {
 
-  constructor() { }
+  formValue: any;
 
-  ngOnInit() {
-  }
+  constructor() {
+this.formValue = JSON.parse(localStorage.getItem('form-data'));
+
+console.log(this.formValue);
+   }
+
+
+
 
 }

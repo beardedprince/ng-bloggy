@@ -17,6 +17,7 @@ import { HomeComponent } from './home/home.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 import { FooterComponent } from './footer/footer.component';
+import { PostService } from './post.service';
 
 
 
@@ -40,7 +41,7 @@ import { FooterComponent } from './footer/footer.component';
     AngularFireAuthModule,
     AngularFireModule.initializeApp(environment.firebase)
   ],
-  providers: [],
+  providers: [PostService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
