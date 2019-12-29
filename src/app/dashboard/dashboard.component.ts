@@ -17,7 +17,7 @@ export class DashboardComponent  {
   submitted = false;
   success = false;
   user: firebase.User;
-  stackUp = Object;
+  
 
   constructor(private afAuth: AngularFireAuth,
               private formBuilder: FormBuilder,
