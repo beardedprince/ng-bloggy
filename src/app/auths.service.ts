@@ -71,17 +71,5 @@ export class AuthsService {
     });
   }
 
-  getPost() {
-    this.postList = this.db.list('posts');
-    return this.postList.snapshotChanges();
-  }
-
-  sendPost(posts) {
-    this.postList.push({
-      postTitle: posts.postTitle,
-      postBody: posts.postBody
-    });
-  }
-
 }
 

@@ -3,6 +3,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 import {AuthsService} from '../auths.service';
+import {PostService} from '../post.service';
 
 
 @Component({
@@ -16,7 +17,12 @@ export class DashboardComponent  {
   submitted = false;
   success = false;
   user: firebase.User;
-  constructor(private afAuth: AngularFireAuth, private formBuilder: FormBuilder, private authService: AuthsService) {
+  
+
+  constructor(private afAuth: AngularFireAuth,
+              private formBuilder: FormBuilder,
+              private authService: AuthsService,
+              private postService: PostService) {
     this.postForm = this.formBuilder.group({
       postTitle: ['', Validators.required],
       postBody: ['', Validators.required]
@@ -24,14 +30,15 @@ export class DashboardComponent  {
     afAuth.authState.subscribe(user => this.user = user);
    }
 
-   submitPost() {
+   submitPost(post) {
      this.submitted = true;
      if (this.postForm.invalid) {
        return;
      }
      this.success = true;
      console.log(this.postForm.value);
-     this.authService.getPost();
+     localStorage.setItem('form-data', JSON.stringify(this.postForm.value) || '[]');
+    //  this.postService.getPost(post);
    }
 
    logout() {
