@@ -15,6 +15,7 @@ export class RegisterComponent {
   user: any;
   email: string;
   password: string;
+  fieldTextType: boolean;
 
 
   constructor(private formBuilder: FormBuilder, private authService: AuthsService) {
@@ -34,6 +35,10 @@ register() {
   this.success = true;
   this.authService.registerUser( this.registerForm.value.email, this.registerForm.value.password);
   console.log(this.registerForm.controls.email.value);
+}
+
+toggleFieldTextType() {
+  this.fieldTextType = !this.fieldTextType;
 }
 
 }

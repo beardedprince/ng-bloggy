@@ -21,6 +21,7 @@ export class LoginComponent  {
   success = false;
   email: string;
   password: string;
+  fieldTextType: boolean;
 
   constructor(  private afAuth: AngularFireAuth,
                 private formBuilder: FormBuilder,
@@ -55,5 +56,9 @@ export class LoginComponent  {
 
   forgotPassword() {
     this.authService.sendPasswordResetMail(this.email);
+  }
+
+  toggleFieldTextType() {
+    this.fieldTextType = !this.fieldTextType;
   }
 }

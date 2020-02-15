@@ -10,16 +10,17 @@ import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
   providedIn: 'root'
 })
 export class PostService {
+  postList: AngularFireList<any>;
 
   constructor(private db: AngularFireDatabase) { }
-  getPost(post) {
-   return this.db.list('/posts').push(post);
-  }
-
-  // getPost(posts) {
-  //   this.postList.push({
-  //     postTitle: posts.postTitle,
-  //     postBody: posts.postBody
-  //   });
+  // getPost(post) {
+  //  return this.db.list('/posts').push(post);
   // }
+
+  getPost(posts) {
+    this.postList.push({
+      postTitle: posts.postTitle,
+      postBody: posts.postBody
+    });
+  }
 }
