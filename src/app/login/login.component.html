@@ -18,11 +18,19 @@
               
               <div class="form-group my-3">
                   <label for="password">Password</label>
-                  <input type="password" name="password" id="password" class="form-control" formControlName= "password" placeholder="enter your unique password">
+                 <div class="input-group">
+                  <input type="password" name="password" id="password" class="form-control" formControlName= "password" placeholder="enter your unique password"
+                  [type]="fieldTextType ? 'text': 'password'">
+                  <div class="input-group-append">
+                    <span class="input-group-text">
+                      <i class="fa fa-eye-slash" [ngClass]="{'fa-eye-slash': !fieldTextType, 'fa-eye': fieldTextType }" (click)="toggleFieldTextType()"></i>
+                    </span>
+                  </div>
                   <div *ngIf = "submitted && loginForm.controls.password.errors" class="text-danger">
                       <div *ngIf = "loginForm.controls.password.errors.required"> Password is required</div>
                       <div *ngIf = "loginForm.controls.password.errors.minlength"> Minimum of 6 characters</div>
                     </div>
+                 </div>
                 </div>
                
                 <button class="btn btn-info btn-block mt-2" type = "submit">  Login </button>

@@ -14,7 +14,6 @@ export class AuthsService {
 
 
   constructor(private afAuth: AngularFireAuth, private router: Router, private db: AngularFireDatabase) { }
-  postList: AngularFireList<any>;
   // Login user
   loginUser(email: string, password: string) {
     this.afAuth
