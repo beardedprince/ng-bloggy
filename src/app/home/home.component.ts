@@ -1,22 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { DashboardComponent } from '../dashboard/dashboard.component';
+import { PostService } from '../post.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent  {
+export class HomeComponent implements OnInit {
 
   formValue: any;
+  posts: object;
 
-  constructor() {
-this.formValue = JSON.parse(localStorage.getItem('form-data'));
+  constructor(private postService: PostService) { }
 
-console.log(this.formValue);
-   }
-
-
+  ngOnInit() {
+    this.postService.getPost().subscribe( data => {
+      this.posts = data;
+    })
+  }
 
 
 }

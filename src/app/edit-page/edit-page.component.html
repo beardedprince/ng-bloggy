@@ -10,32 +10,33 @@
                      <p>Dashboard Manager</p>
                     </div>
                     <ul class="list-group list-group-flush">
-                      <li class="list-group-item"><i class="fa fa-user pr-3"></i> Profile</li>
+                      <li class="list-group-item" [routerLink] = "['/dashboard']"><i class="fa fa-user pr-3"></i> Profile</li>
                       <li class="list-group-item" [routerLink] = "['/dashboard', 'post']"><i class="fa fa-edit pr-3"></i> Posts</li>
                     </ul>
                   </div>
     </div>
     <div class="col-md-8 offset-md-1 border ">
-        <h5> Write your post</h5>
-        <form [formGroup]="postForm" (ngSubmit)="submitPost()"> 
+        <h5> Edit your post</h5>
+        <form [formGroup]="updatePostForm" (ngSubmit)="submitEdit()"> 
             <div class="alert alert-success my-2 alert-dismissible fade show" role="alert" *ngIf = "success"> Post Successful
               <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
 
-            <div class="form-group">
+            <div class="form-group" >
                 <label for=""></label>
-                <input type="text" name="title" id="title" class="form-control" formControlName = "title" placeholder="Post Title">
+                <input type="text" name="title" id="title" class="form-control" formControlName = "title" placeholder="Post Title" > 
                 <div *ngIf = "submitted && postForm.controls.title.errors" class="text-danger">
                   <div *ngIf = "postForm.controls.title.errors.required">Post title is required </div>
                 </div>
               </div>
-              <textarea name="post" id="post" class="form-control" formControlName="postbody" placeholder="enter post contents here"></textarea>
+              <textarea name="post" id="post" class="form-control" formControlName="postbody" placeholder="enter post contents here" >  </textarea>
               <div *ngIf = "submitted && postForm.controls.postbody.errors" class="text-danger">
                   <div *ngIf = "postForm.controls.postbody.errors.required">Post content is also required </div>
                 </div>
-              <button class="btn btn-info my-3" type = "submit">Send Post</button>
+              <button class="btn btn-info my-3 mr-3" type = "submit" >Save </button>
+              <button class="btn btn-danger my-3" type = "submit" (click)="cancelUpdate()">Cancel </button>
         </form>
 
     </div>

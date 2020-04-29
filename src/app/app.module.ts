@@ -18,6 +18,9 @@ import { NotfoundComponent } from './notfound/notfound.component';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 import { FooterComponent } from './footer/footer.component';
 import { PostService } from './post.service';
+import { HttpClientModule } from '@angular/common/http';
+import { PostPageComponent } from './post-page/post-page.component';
+import { EditPageComponent } from './edit-page/edit-page.component';
 
 
 
@@ -31,7 +34,9 @@ import { PostService } from './post.service';
     HomeComponent,
     NotfoundComponent,
     ForgotpasswordComponent,
-    FooterComponent
+    FooterComponent,
+    PostPageComponent,
+    EditPageComponent
   ],
   imports: [
     BrowserModule,
@@ -39,6 +44,7 @@ import { PostService } from './post.service';
     ReactiveFormsModule,
     AngularFireDatabaseModule,
     AngularFireAuthModule,
+    HttpClientModule,
     AngularFireModule.initializeApp(environment.firebase)
   ],
   providers: [PostService],
