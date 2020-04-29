@@ -4,6 +4,7 @@ import * as firebase from 'firebase';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 import {AuthsService} from '../auths.service';
 import {PostService} from '../post.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -21,10 +22,11 @@ export class DashboardComponent  {
   constructor(private afAuth: AngularFireAuth,
               private formBuilder: FormBuilder,
               private authService: AuthsService,
-              private postService: PostService) {
+              private postService: PostService,
+              private router: Router) {
     this.postForm = this.formBuilder.group({
-      postTitle: ['', Validators.required],
-      postBody: ['', Validators.required]
+      title: ['', Validators.required],
+      postbody: ['', Validators.required]
     });
     afAuth.authState.subscribe(user => this.user = user);
    }
@@ -36,8 +38,10 @@ export class DashboardComponent  {
      }
      this.success = true;
      console.log(this.postForm.value);
-     localStorage.setItem('form-data', JSON.stringify(this.postForm.value) || '[]');
-    //  this.postService.getPost(post);
+     this.postService.sendPost(this.postForm.value).subscribe( data => {
+       console.log(data);
+       this.router.navigate(['/', 'dashboard', 'post']);
+     });
    }
 
    logout() {
