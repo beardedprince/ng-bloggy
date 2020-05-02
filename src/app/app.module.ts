@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {AngularFireModule} from 'angularfire2';
 import {AngularFireDatabaseModule} from 'angularfire2/database';
-import { environment } from 'src/environments/environment';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import {ReactiveFormsModule} from '@angular/forms';
 // components
@@ -21,8 +20,9 @@ import { PostService } from './post.service';
 import { HttpClientModule } from '@angular/common/http';
 import { PostPageComponent } from './post-page/post-page.component';
 import { EditPageComponent } from './edit-page/edit-page.component';
-
-
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
+// import { NgxEditorModule } from 'ngx-editor';
 
 @NgModule({
   declarations: [
@@ -45,7 +45,8 @@ import { EditPageComponent } from './edit-page/edit-page.component';
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     HttpClientModule,
-    AngularFireModule.initializeApp(environment.firebase)
+    AngularFireModule.initializeApp(environment.firebase),
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [PostService],
   bootstrap: [AppComponent]

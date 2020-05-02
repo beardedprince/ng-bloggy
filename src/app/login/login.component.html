@@ -6,8 +6,8 @@
       
       <div class="col-md-6 offset-md-3 border rounded shadow-sm my-5 ">
           <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-            <div class="alert alert-success my-2" *ngIf = "success"> login Successful</div>
-              
+            <div class="alert alert-success my-2" *ngIf = "authService.msg "> network failure </div>
+            <div class="alert alert-success my-2" *ngIf = "success && !authService.msg && !authService.passwordmsg "> Login Successful </div>
             <div class="form-group my-3">
                 <label for="email">Email</label>
                 <input type="email" name="email" id="email" class="form-control" formControlName= "email" placeholder="Enter your name">

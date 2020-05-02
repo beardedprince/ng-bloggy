@@ -44,7 +44,7 @@ export class PostService {
     const url = `${this.path}/${id}`;
     return this.http.delete(url );
   }
-
+// updatePost
   updatePost(id: any, updatePostForm) {
     const url = `${this.path}/${id}`;
     return this.http.put(url, updatePostForm );

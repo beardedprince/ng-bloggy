@@ -53,6 +53,7 @@ export class PostPageComponent implements OnInit {
   getPosts() {
     this.postService.getPost().subscribe( data => {
       this.postList = data;
+      console.log(this.postList);
     });
 
   }

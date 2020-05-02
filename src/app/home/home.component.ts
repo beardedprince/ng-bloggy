@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { DashboardComponent } from '../dashboard/dashboard.component';
 import { PostService } from '../post.service';
 
 @Component({
@@ -17,7 +16,8 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.postService.getPost().subscribe( data => {
       this.posts = data;
-    })
+      console.log(this.posts);
+    });
   }
 
 
