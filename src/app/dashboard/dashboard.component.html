@@ -1,21 +1,20 @@
 <app-navbar></app-navbar>
 <div class="container">
- welcome back {{user.displayName}}
 
 <section>
 <div class="row">
-    <div class="col-md-3 ">
-            <div class="card" >
+    <div class="col-md-3 mt-5">
+        <div class="card" >
                     <div class="card-header">
                      <p>Dashboard Manager</p>
                     </div>
                     <ul class="list-group list-group-flush">
-                      <li class="list-group-item"><i class="fa fa-user pr-3"></i> Profile</li>
-                      <li class="list-group-item" [routerLink] = "['/dashboard', 'post']"><i class="fa fa-edit pr-3"></i> Posts</li>
+                      <li class="list-group-item"><i class="fa fa-user pr-3"></i> Dashboard</li>
+                      <li class="list-group-item" [routerLink] = "['/dashboard', 'post']"><i class="fa fa-edit pr-3"></i> Timeline</li>
                     </ul>
                   </div>
     </div>
-    <div class="col-md-8 offset-md-1 border ">
+    <div class="col-md-8 offset-md-1 border mt-5 ">
         <h5> Write your post</h5>
         <form [formGroup]="postForm" (ngSubmit)="submitPost()"> 
             <div class="alert alert-success my-2 alert-dismissible fade show" role="alert" *ngIf = "success"> Post Successful
@@ -30,11 +29,13 @@
                 <div *ngIf = "submitted && postForm.controls.title.errors" class="text-danger">
                   <div *ngIf = "postForm.controls.title.errors.required">Post title is required </div>
                 </div>
-              </div>
+              </div> 
+              
               <textarea name="post" id="post" class="form-control" formControlName="postbody" placeholder="enter post contents here"></textarea>
               <div *ngIf = "submitted && postForm.controls.postbody.errors" class="text-danger">
                   <div *ngIf = "postForm.controls.postbody.errors.required">Post content is also required </div>
                 </div>
+
               <button class="btn btn-info my-3" type = "submit">Send Post</button>
         </form>
 
