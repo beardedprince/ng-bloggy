@@ -12,11 +12,19 @@ import { AuthsService } from '../auths.service';
   styleUrls: ['./edit-page.component.css']
 })
 export class EditPageComponent implements OnInit {
-
   updatePostForm: FormGroup;
   // tslint:disable-next-line:variable-name
  id: string;
  user: firebase.User;
+ editorStyle = {
+   height : '300px'
+ };
+ config = {
+   toolbar: [
+     ['bold', 'italic', 'underline', 'link'],
+     ['code-block']
+   ]
+ }
 
 
   constructor(private formBuilder: FormBuilder, private route: ActivatedRoute,

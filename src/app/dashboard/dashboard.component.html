@@ -30,12 +30,20 @@
                   <div *ngIf = "postForm.controls.title.errors.required">Post title is required </div>
                 </div>
               </div> 
+
+              <div class="form-group">
+                  <quill-editor formControlName="postbody" [styles]="editorStyle" [modules]="config"  ></quill-editor>
+              </div>
+
               
-              <textarea name="post" id="post" class="form-control" formControlName="postbody" placeholder="enter post contents here"></textarea>
+
+              <!-- <textarea name="post" id="post" class="form-control" formControlName="postbody" placeholder="enter post contents here"></textarea>
               <div *ngIf = "submitted && postForm.controls.postbody.errors" class="text-danger">
                   <div *ngIf = "postForm.controls.postbody.errors.required">Post content is also required </div>
-                </div>
+                </div> -->
 
+                
+                
               <button class="btn btn-info my-3" type = "submit">Send Post</button>
         </form>
 

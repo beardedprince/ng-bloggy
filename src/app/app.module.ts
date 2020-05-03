@@ -22,7 +22,7 @@ import { PostPageComponent } from './post-page/post-page.component';
 import { EditPageComponent } from './edit-page/edit-page.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-// import { NgxEditorModule } from 'ngx-editor';
+import { QuillModule } from 'ngx-quill';
 
 @NgModule({
   declarations: [
@@ -36,7 +36,7 @@ import { environment } from '../environments/environment';
     ForgotpasswordComponent,
     FooterComponent,
     PostPageComponent,
-    EditPageComponent
+    EditPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,6 +45,7 @@ import { environment } from '../environments/environment';
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     HttpClientModule,
+    QuillModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebase),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
