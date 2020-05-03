@@ -18,6 +18,7 @@ export class PostPageComponent implements OnInit {
   postForm: FormGroup;
   success = false;
   user: firebase.User;
+  editorContent: any;
 
   constructor(private postService: PostService, private router: Router, private formBuilder: FormBuilder, private afAuth: AngularFireAuth,
               private authService: AuthsService) {
@@ -52,7 +53,8 @@ export class PostPageComponent implements OnInit {
 
   getPosts() {
     this.postService.getPost().subscribe( data => {
-      this.postList = data;
+      this.editorContent = data;
+      this.postList = this.editorContent;
       console.log(this.postList);
     });
 

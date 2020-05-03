@@ -5,7 +5,7 @@ import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 import {AuthsService} from '../auths.service';
 import {PostService} from '../post.service';
 import { Router } from '@angular/router';
-
+import { QuillEditorComponent } from 'ngx-quill';
 
 
 
@@ -20,6 +20,15 @@ export class DashboardComponent  {
   submitted = false;
   success = false;
   user: firebase.User;
+  editorStyle = {
+    height : '300px'
+  };
+  config = {
+    toolbar: [
+      ['bold', 'italic', 'underline', 'link'],
+      ['code-block']
+    ]
+  }
 
   constructor(private afAuth: AngularFireAuth,
               private formBuilder: FormBuilder,
