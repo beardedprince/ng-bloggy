@@ -12,14 +12,12 @@
           <div class="card-header">
             <p>Dashboard Manager</p>
           </div>
+          
+
           <ul class="list-group list-group-flush">
-            <li class="list-group-item" [routerLink] = "['/dashboard']">
-              <i class="fa fa-user pr-3" ></i> Create Post
-            </li>
-            <li class="list-group-item" >
-              <i class="fa fa-edit pr-3"></i> Timeline
-            </li>
-            
+            <li class="list-group-item" [routerLink] = "['/dashboard']"><i class="fa fa-user pr-3"></i> Profile</li>
+            <li class="list-group-item" [routerLink] = "['/dashboard', 'new-post']"><i class="fa fa-edit pr-3"></i> Create Post</li>
+            <li class="list-group-item" ><i class="fa fa-edit pr-3"></i> Timeline</li>
           </ul>
         </div>
       </div>
@@ -27,9 +25,12 @@
       <div class="col-md-8 offset-md-1 bordered-info ">
         <h5 class="my-2">Previous posts</h5>
         
-        <div class="spinner-grow" style="width: 3rem; height: 3rem;" role="status" *ngIf = "isLoading">
-          <span class="sr-only">Loading...</span>
+        <div class="d-flex justify-content-center">
+          <div class="spinner-grow text-success" style="width: 3rem; height: 3rem;" role="status" *ngIf = "isLoading">
+            <span class="sr-only">Loading...</span>
+          </div>
         </div>
+        
         <div class="row my-3" *ngFor="let post of postList">
           <div class="card w-100" >
             <div class="card-body ">

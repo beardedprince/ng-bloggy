@@ -23,6 +23,8 @@ import { EditPageComponent } from './edit-page/edit-page.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { QuillModule } from 'ngx-quill';
+import { ProfileComponent } from './profile/profile.component';
+import { NgxShimmerLoadingModule } from 'ngx-shimmer-loading';
 
 @NgModule({
   declarations: [
@@ -37,6 +39,7 @@ import { QuillModule } from 'ngx-quill';
     FooterComponent,
     PostPageComponent,
     EditPageComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,6 +48,7 @@ import { QuillModule } from 'ngx-quill';
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     HttpClientModule,
+    NgxShimmerLoadingModule,
     QuillModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebase),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
