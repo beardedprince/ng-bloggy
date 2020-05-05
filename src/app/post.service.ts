@@ -29,29 +29,29 @@ export class PostService {
   // }
 
   createProfile(profileForm) {
-    return this.http.post(this.path, profileForm);
+    return this.http.post(this.path + '/users', profileForm);
   }
 
   sendPost(postForm) {
-    return this.http.post(this.path, postForm);
+    return this.http.post(this.path + '/post', postForm);
   }
 
   getPost() {
-    return this.http.get(this.path);
+    return this.http.get(this.path + '/post');
   }
 
   getPostById(id) {
-    const url = `${this.path}/${id}`;
+    const url = `${this.path + '/post'}/${id}`;
     return this.http.get(url);
   }
 
   deletePost(id) {
-    const url = `${this.path}/${id}`;
+    const url = `${this.path + '/post'}/${id}`;
     return this.http.delete(url );
   }
 // updatePost
   updatePost(id: any, updatePostForm) {
-    const url = `${this.path}/${id}`;
+    const url = `${this.path + '/post'}/${id}`;
     return this.http.put(url, updatePostForm );
   }
 }
