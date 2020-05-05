@@ -9,12 +9,9 @@
             <p>Dashboard Manager</p>
           </div>
           <ul class="list-group list-group-flush">
-            <li class="list-group-item" [routerLink]="['/dashboard']">
-              <i class="fa fa-user pr-3"></i> Create Post
-            </li>
-            <li class="list-group-item" [routerLink]="['/dashboard', 'post']">
-              <i class="fa fa-edit pr-3"></i> Timeline
-            </li>
+            <li class="list-group-item" ><i class="fa fa-user pr-3"></i> Profile</li>
+            <li class="list-group-item" ><i class="fa fa-edit pr-3"></i> Create Post</li>
+            <li class="list-group-item" ><i class="fa fa-edit pr-3"></i> Timeline</li>
           </ul>
         </div>
       </div>
@@ -22,7 +19,7 @@
         <h5 class="my-2">Edit your post</h5>
         <form [formGroup]="updatePostForm" (ngSubmit)="submitEdit()">
           <div class="alert alert-success my-2 alert-dismissible fade show" role="alert" *ngIf="success">
-            Post Successful
+            Post edited successful
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>

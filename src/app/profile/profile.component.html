@@ -1,0 +1,60 @@
+<app-navbar></app-navbar>
+<div class="container">
+
+<section>
+<div class="row">
+    <div class="col-md-3 mt-5">
+        <div class="card" >
+                    <div class="card-header">
+                     <p>Dashboard Manager</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item"><i class="fa fa-user pr-3"></i> Profile</li>
+                      <li class="list-group-item" [routerLink] = "['/dashboard', 'new-post']"><i class="fa fa-edit pr-3"></i> Create Post</li>
+                      <li class="list-group-item" [routerLink] = "['/dashboard', 'post']"><i class="fa fa-edit pr-3"></i> Timeline</li>
+                    </ul>
+                  </div>
+    </div>
+    <div class="col-md-8 offset-md-1 border mt-5 ">
+        <h5> Bio</h5>
+        <form [formGroup]="profileForm" (ngSubmit)="submitPost()"> 
+            <div class="alert alert-success my-2 alert-dismissible fade show" role="alert" *ngIf = "success"> Profile Created Successful
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+
+            <div class="form-group">
+                <label for=""></label>
+                <input type="text" name="name" id="name" class="form-control" formControlName = "name" placeholder="Your name">
+                <div *ngIf = "submitted && profileForm.controls.name.errors" class="text-danger">
+                  <div *ngIf = "profileForm.controls.name.errors.required">name is required </div>
+                </div>
+            </div> 
+            <div class="form-group">
+                <label for=""></label>
+                <input type="text" name="username" id="username" class="form-control" formControlName = "username" placeholder="username">
+                <div *ngIf = "submitted && profileForm.controls.username.errors" class="text-danger">
+                  <div *ngIf = "profileForm.controls.title.username.required">username is required </div>
+                </div>
+            </div> 
+
+              <div class="form-group">
+                <textarea name="post" id="post" class="form-control" formControlName="description" placeholder="enter brief information about yourself"></textarea>
+                <div *ngIf = "submitted && profileForm.controls.description.errors" class="text-danger">
+                    <div *ngIf = "profileForm.controls.description.errors.required">Description is also required </div>
+                  </div>
+              </div>
+
+                
+                
+              <button class="btn btn-info my-3" type = "submit">Create Profile</button>
+        </form>
+
+    </div>
+
+</div>
+   
+</section>
+</div>
+

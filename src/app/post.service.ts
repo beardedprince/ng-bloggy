@@ -14,6 +14,7 @@ export class PostService {
   postList: AngularFireList<any>;
 
   path  = environment.path;
+  // post = 'http://localhost:3000/api/users';
 
   constructor(private db: AngularFireDatabase, private http: HttpClient) { }
   // getPost(post) {
@@ -26,6 +27,10 @@ export class PostService {
   //     postBody: posts.postBody
   //   });
   // }
+
+  createProfile(profileForm) {
+    return this.http.post(this.path, profileForm);
+  }
 
   sendPost(postForm) {
     return this.http.post(this.path, postForm);

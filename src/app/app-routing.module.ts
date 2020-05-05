@@ -9,12 +9,14 @@ import {NotfoundComponent} from './notfound/notfound.component';
 import {ForgotpasswordComponent} from './forgotpassword/forgotpassword.component';
 import { PostPageComponent } from './post-page/post-page.component';
 import { EditPageComponent } from './edit-page/edit-page.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'login',  component: LoginComponent },
   {path: 'register', component: RegisterComponent },
-  {path: 'dashboard', component: DashboardComponent },
+  {path: 'dashboard', component: ProfileComponent },
+  {path: 'dashboard/new-post', component: DashboardComponent },
   {path: 'dashboard/post', component: PostPageComponent },
   {path: 'dashboard/post/edit', component: EditPageComponent },
   {path: 'dashboard/post/edit/:id', component: EditPageComponent },
