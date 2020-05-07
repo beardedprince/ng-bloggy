@@ -43,7 +43,7 @@ export class HomeComponent implements OnInit {
   //     this.avatars = data;
   //     console.log(this.avatars);
   //   });
-  }
+  // }
 
 
 
