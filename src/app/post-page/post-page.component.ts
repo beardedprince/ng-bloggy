@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 import { AuthsService } from '../auths.service';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { QuillEditorComponent } from 'ngx-quill';
 
 
 @Component({
@@ -19,6 +20,7 @@ export class PostPageComponent implements OnInit {
   success = false;
   user: firebase.User;
   editorContent: any;
+  idnum: any;
 
   constructor(private postService: PostService, private router: Router, private formBuilder: FormBuilder, private afAuth: AngularFireAuth,
               private authService: AuthsService) {
@@ -53,11 +55,21 @@ export class PostPageComponent implements OnInit {
 
   getPosts() {
     this.postService.getPost().subscribe( data => {
-      this.editorContent = data;
-      this.postList = this.editorContent;
+      this.postList = data;
       console.log(this.postList);
     });
 
+  }
+
+  goToNewPost()  {
+    this.idnum =  JSON.parse(localStorage.getItem('data'));
+    console.log('localstorage', this.idnum._id ) ;
+    this.router.navigate(['/dashboard', 'new-post', this.idnum._id]);
+    console.log('gotten id', this.idnum._id);
+  }
+
+  goToProfile()  {
+    alert('Sorry, profile can only be created once..');
   }
 
   // editIssue(id: string) {

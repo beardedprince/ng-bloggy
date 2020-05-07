@@ -12,19 +12,22 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { ProfileComponent } from './profile/profile.component';
 import { HomeComponent } from './home/home.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 import { FooterComponent } from './footer/footer.component';
-import { PostService } from './post.service';
 import { HttpClientModule } from '@angular/common/http';
 import { PostPageComponent } from './post-page/post-page.component';
 import { EditPageComponent } from './edit-page/edit-page.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { QuillModule } from 'ngx-quill';
-import { ProfileComponent } from './profile/profile.component';
-import { NgxShimmerLoadingModule } from 'ngx-shimmer-loading';
+// import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+
+// services
+import { PostService } from './post.service';
+import { NgxEditorModule } from 'ngx-editor';
 
 @NgModule({
   declarations: [
@@ -48,7 +51,8 @@ import { NgxShimmerLoadingModule } from 'ngx-shimmer-loading';
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     HttpClientModule,
-    NgxShimmerLoadingModule,
+    // NgxSkeletonLoaderModule,
+    NgxEditorModule,
     QuillModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebase),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })

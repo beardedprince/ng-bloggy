@@ -9,15 +9,15 @@
                      <p>Dashboard Manager</p>
                     </div>
                     <ul class="list-group list-group-flush">
-                      <li class="list-group-item" [routerLink] = "['/dashboard']"><i class="fa fa-user pr-3"></i> Profile</li>
-                      <li class="list-group-item"><i class="fa fa-user pr-3"></i> Create Post</li>
-                      <li class="list-group-item" [routerLink] = "['/dashboard', 'post']"><i class="fa fa-edit pr-3"></i> Timeline</li>
+                      <li class="list-group-item" (click)="goToProfile()" ><i class="fa fa-user pr-3"></i> Profile</li>
+                      <li class="list-group-item" (click)="goToNewPost()" ><i class="fa fa-user pr-3"></i> Create Post</li>
+                      <li class="list-group-item" [routerLink] = "['/dashboard', 'my-post']"><i class="fa fa-edit pr-3"></i> Timeline</li>
                     </ul>
                   </div>
     </div>
     <div class="col-md-8 offset-md-1 border mt-5 ">
         <h5> Write your post</h5>
-        <form [formGroup]="postForm" (ngSubmit)="submitPost()"> 
+        <form [formGroup]="postForm" (ngSubmit)="submitPost()" action="/public/uploads" enctype="multipart/form-data"> 
             <div class="alert alert-success my-2 alert-dismissible fade show" role="alert" *ngIf = "success"> Post Successful
               <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
@@ -33,8 +33,12 @@
               </div> 
 
               <div class="form-group">
-                  <quill-editor formControlName="postbody" [styles]="editorStyle" [modules]="config"  ></quill-editor>
+                  <quill-editor formControlName="postbody" [styles]="editorStyle" [modules]="config" format="text" ></quill-editor>
               </div>
+
+              
+
+              <!-- <ngx-editor formControlName="postbody"></ngx-editor> -->
 
               
 

@@ -32,8 +32,13 @@ export class PostService {
     return this.http.post(this.path + '/users', profileForm);
   }
 
-  sendPost(postForm) {
-    return this.http.post(this.path + '/post', postForm);
+  // createProfile(profileForm) {
+  //   return this.http.post('http://localhost:3000/upload', profileForm);
+  // }
+
+  sendPost(id: any, postForm) {
+    const url = `${this.path + '/post'}/${id}`;
+    return this.http.post(url, postForm);
   }
 
   getPost() {

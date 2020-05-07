@@ -70,7 +70,7 @@ export class EditPageComponent implements OnInit {
   submitEdit() {
     this.postService.updatePost(this.id, this.updatePostForm.value).subscribe( data => {
       console.log('data saved', data);
-      this.router.navigate(['/', 'dashboard', 'post']);
+      this.router.navigate(['/', 'dashboard', 'my-post']);
     }, err =>  {
       console.log('err saving', err);
     });
@@ -82,7 +82,7 @@ export class EditPageComponent implements OnInit {
       return alert('please save your edits first');
     } else {
       if (window.confirm('Are you sure?')) {
-        this.router.navigate(['/dashboard', 'post']);
+        this.router.navigate(['/dashboard', 'my-post']);
       }
     }
   }

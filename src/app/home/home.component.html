@@ -1,40 +1,43 @@
+<app-navbar></app-navbar>
+<div class="container">
+  <div class="row">
+    <div class="col-md-9 mt-3">
+      <div class="card col-md-12 my-3">
 
-    <app-navbar></app-navbar>
-    <div class="container">
-        <div class="row" >
-          <div class="col-md-9 mt-3" >
-            <div class="card col-md-12 my-3">
-              
-                      <p class="pt-2" routerLink = "/login"> <i class="fa fa-pen pl-4 pr-2 text-default"></i> Write a new story </p>
-              
-            </div>
-              <h5>Trending Posts</h5>
-              <div class="card my-3" *ngFor = "let post of posts">
-                
-                <div class="card-header">
-                  {{post.title}}
-                </div>
-                <div class="card-body">
-                  <p class="card-title"> {{post.postbody}}  </p> 
-                  <p class="card-text "><small class="text-muted">Last updated {{post.createdAt | date: shortTime}}</small>
-                </div>
-               
-              </div>
+        <p class="pt-2" routerLink="/login"> <i class="fa fa-pen pl-4 pr-2 text-default"></i> Write a new story </p>
 
-              
-             
-              
+      </div>
+      <h5>Trending Posts</h5>
+      <div class="card my-3" *ngFor="let post of posts">
+
+        <div class="card-header">
+          {{post.title}}
+        </div>
+        <div class="card-body">
+          <p class="card-title"> {{post.postbody}} </p>
+          <div class="d-flex">
+            <p class="card-text flex-fill "><small class="text-muted"> by {{post.postedBy.name}}</small></p>
+            <p class="card-text "><small class="text-muted">Last updated {{post.createdAt | date: shortTime}}</small>
           </div>
-          
-          <div class="col-md-3 mt-3 d-flex flex-column">
-            <div class="card my-2 ">
-                <p class="pl-1"> Active Users </p>
-            </div>
-
-            
 
         </div>
-        
+
+ 
       </div>
 
-      
+
+
+    </div>
+
+    <div class="col-md-3 mt-3 d-flex flex-column">
+        <p class="pl-1"> Active Users </p>
+      <div class="card my-2 " *ngFor = "let user of userList">
+        
+        <li>   {{user.name}} </li>
+      </div>
+
+
+
+    </div>
+
+  </div>
