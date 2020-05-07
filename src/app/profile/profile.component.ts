@@ -5,15 +5,19 @@ import { AuthsService } from '../auths.service';
 import { PostService } from '../post.service';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
+
+
   profileForm: FormGroup;
   submitted = false;
   success = false;
+  getResult: object;
 
   constructor(private afAuth: AngularFireAuth,
               private formBuilder: FormBuilder,
@@ -23,6 +27,7 @@ export class ProfileComponent implements OnInit {
     this.profileForm = this.formBuilder.group({
       name: ['', Validators.required],
       username: ['', Validators.required],
+      // avatar: [ '' ],
       description: ['', Validators.required]
     });
 
@@ -31,19 +36,30 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit() {
-  }
+    const get =  JSON.parse(localStorage.getItem('data'));
+    console.log('localstorage', get._id ) ;
+ }
 
   submitPost(post) {
     this.submitted = true;
     if (this.profileForm.invalid) {
       return;
     }
-    this.success = true;
     console.log(this.profileForm.value);
     this.postService.createProfile(this.profileForm.value).subscribe(data => {
-      console.log(data);
-      this.router.navigate(['/', 'dashboard', 'new-post']);
+      this.getResult = data;
+      console.log('sdsds', this.getResult);
+      localStorage.setItem('data', JSON.stringify(data));
+      const get =  JSON.parse(localStorage.getItem('data'));
+      console.log('localstorage', get._id ) ;
+      this.router.navigate(['/', 'dashboard', 'new-post', get._id]);
+    }, err => {
+      console.log(err);
     });
+  }
+
+  giveAlert() {
+    alert('please create a profile first');
   }
 
 }
