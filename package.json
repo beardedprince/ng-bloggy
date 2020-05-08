@@ -27,6 +27,7 @@
     "core-js": "^2.5.4",
     "firebase": "^7.6.0",
     "jquery": "^3.4.1",
+    "ng-connection-service": "^1.0.4",
     "ngx-editor": "^5.0.0-alpha.4",
     "ngx-quill": "^9.1.0",
     "ngx-skeleton-loader": "^1.2.7",

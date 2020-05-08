@@ -10,6 +10,7 @@ import {ForgotpasswordComponent} from './forgotpassword/forgotpassword.component
 import { PostPageComponent } from './post-page/post-page.component';
 import { EditPageComponent } from './edit-page/edit-page.component';
 import { ProfileComponent } from './profile/profile.component';
+import { PostDetailComponent } from './post-detail/post-detail.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -22,6 +23,7 @@ const routes: Routes = [
   {path: 'dashboard/post/edit', component: EditPageComponent },
   {path: 'dashboard/post/edit/:id', component: EditPageComponent },
   {path: 'forgotpassword', component: ForgotpasswordComponent },
+  {path: 'post/:id', component: PostDetailComponent},
   {path: '**', component: NotfoundComponent },
 ];
 

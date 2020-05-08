@@ -1,3 +1,11 @@
 li {
     padding-left: 5px;
 }
+
+.post-body{
+ cursor: pointer;
+ color: #718096 !important;
+ 
+}
+
+

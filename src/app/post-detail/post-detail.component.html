@@ -1,0 +1,30 @@
+<app-navbar></app-navbar>
+<div class="container">
+  <div class="row">
+    <div class="col-md-9 my-4 border rounded" >
+      <div class="my-3">
+        <h3 class="display-4"> {{storyline.title}}</h3>
+        <p><em>posted by {{storyline.postedBy.name}} on {{storyline.createdAt | date}}</em> 
+        <span class="text-muted">  </span>
+        </p>
+      </div>
+
+    <p class="content">
+      {{storyline.postbody}}
+    </p>
+    </div>
+    <div class="col-md-3 my-4">
+      <div class="card border-info">
+        <p class="text-center h4 my-2"> {{storyline.postedBy.name}} <br> <span class="h5 text-muted py-2">  @{{storyline.postedBy.username}}</span>  </p>
+        <p class="text-center text-muted"> 
+            <i class="fab fa-twitter text-info px-2"></i>
+            <i class="fab fab fa-github text-black px-2"></i>
+           </p>
+         <p class="px-2 text-muted"> Date joined: {{storyline.date | date:short}} </p> 
+        <hr class="pl-2">
+         <p class="p-2"> {{storyline.postedBy.description}} </p>
+        <button class="btn btn-info my-3 mx-4"> Follow </button>
+      </div>
+    </div>
+  </div>
+</div>

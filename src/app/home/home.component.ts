@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PostService } from '../post.service';
 import {UserService} from '../user.service';
+import { ConnectionService } from 'ng-connection-service';
 
 @Component({
   selector: 'app-home',
@@ -13,11 +14,25 @@ export class HomeComponent implements OnInit {
   posts: object;
   postBy: any;
   userList: object;
-  // avatars: object;
+  status = 'ONLINE';
+  isConnected = true;
 
-  constructor(private postService: PostService, private user: UserService) { }
+  constructor(private postService: PostService, private user: UserService, private connectionService: ConnectionService) { 
+    this.connectionService.monitor().subscribe(isConnected => {
+      this.isConnected = isConnected;
+      if (this.isConnected) {
+        this.status = 'ONLINE';
+        alert('You are now connected');
+      } else {
+        this.status = 'OFFLINE';
+        alert('You are offline');
+      }
+    });
+  }
+  
 
   ngOnInit() {
+
     this.getPost();
     this.getUsers();
     // this.getAvatar();
