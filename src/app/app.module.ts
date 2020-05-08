@@ -28,6 +28,8 @@ import { QuillModule } from 'ngx-quill';
 // services
 import { PostService } from './post.service';
 import { NgxEditorModule } from 'ngx-editor';
+import { TruncatePipe } from './truncate.pipe';
+import { PostDetailComponent } from './post-detail/post-detail.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +45,8 @@ import { NgxEditorModule } from 'ngx-editor';
     PostPageComponent,
     EditPageComponent,
     ProfileComponent,
+    TruncatePipe,
+    PostDetailComponent,
   ],
   imports: [
     BrowserModule,

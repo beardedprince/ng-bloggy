@@ -15,7 +15,4 @@ export class UserService {
     return this.http.get(this.path + '/users');
   }
 
-  // getAvatar() {
-  //   return this.http.get('https://tinyfac.es/api/users');
-  // }
 }
