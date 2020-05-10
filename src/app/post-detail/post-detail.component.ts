@@ -26,7 +26,7 @@ export class PostDetailComponent implements OnInit {
     console.log(this.id);
 
     this.postDetail(this.id);
-    this.getPostComments();
+    // this.getPostComments();
   }
 
 
@@ -49,10 +49,10 @@ export class PostDetailComponent implements OnInit {
     });
   }
 
-  getPostComments() {
-    this.postService.getComment(this.id).subscribe(data => {
-      console.log(data);
-    });
-  }
+  // getPostComments() {
+  //   this.postService.getComment(this.id).subscribe(data => {
+  //     console.log(data);
+  //   });
+  // }
 
 }
