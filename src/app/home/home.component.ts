@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PostService } from '../post.service';
 import {UserService} from '../user.service';
 import { ConnectionService } from 'ng-connection-service';
+import {Meta, Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-home',
@@ -17,7 +18,10 @@ export class HomeComponent implements OnInit {
   status = 'ONLINE';
   isConnected = true;
 
-  constructor(private postService: PostService, private user: UserService, private connectionService: ConnectionService) { 
+  constructor(private meta: Meta, private title: Title,
+              private postService: PostService,
+              private user: UserService,
+              private connectionService: ConnectionService) {
     this.connectionService.monitor().subscribe(isConnected => {
       this.isConnected = isConnected;
       if (this.isConnected) {
@@ -32,7 +36,7 @@ export class HomeComponent implements OnInit {
   
 
   ngOnInit() {
-
+    this.title.setTitle('Ng-Bloggy | Home');
     this.getPost();
     this.getUsers();
     // this.getAvatar();

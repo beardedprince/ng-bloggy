@@ -59,4 +59,15 @@ export class PostService {
     const url = `${this.path + '/post'}/${id}`;
     return this.http.put(url, updatePostForm );
   }
+
+// commenting system
+  sendComment(id: any, commentForm) {
+    const url = `${this.path + '/comment'}/${id}`;
+    return this.http.post(url, commentForm);
+  }
+
+  getComment(id) {
+    const url = `${this.path + '/comment'}/${id}`;
+    return this.http.get(url);
+  }
 }

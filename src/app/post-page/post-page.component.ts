@@ -19,7 +19,6 @@ export class PostPageComponent implements OnInit {
   postForm: FormGroup;
   success = false;
   user: firebase.User;
-  editorContent: any;
   idnum: any;
 
   constructor(private postService: PostService, private router: Router, private formBuilder: FormBuilder, private afAuth: AngularFireAuth,
