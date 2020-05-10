@@ -25,11 +25,12 @@ export class DashboardComponent implements OnInit  {
     height : '300px'
   };
   config = {
+    syntax: true,
     toolbar: [
       ['bold', 'italic', 'underline', 'link'],
       ['code-block']
     ]
-  };
+  };  
   id: any;
   idnum: any;
 
@@ -49,8 +50,6 @@ export class DashboardComponent implements OnInit  {
    ngOnInit() {
     this.id = this.route.snapshot.params.id;
     console.log('activated Route', this.id);
-
-    
    }
 
    submitPost(post) {
@@ -60,7 +59,6 @@ export class DashboardComponent implements OnInit  {
      }
      this.success = true;
      console.log(this.postForm.value);
-     this.editorContent = this.postForm.get('postbody').value;
      this.postService.sendPost(this.id, this.postForm.value ).subscribe( data => {
        console.log(data);
        this.router.navigate(['/', 'dashboard', 'my-post']);

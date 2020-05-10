@@ -16,7 +16,7 @@
           </h4>
         </div>
         <div class="card-body">
-          <p class="card-title post-body" [routerLink] = "['/post', post._id]">  {{post.postbody | truncate:250 }} </p>
+          <p class="card-title post-body" [routerLink]="['/post', post._id]"> {{post.postbody | truncate:250 }} </p>
           <div class="d-flex">
             <p class="card-text flex-fill "><small class="text-muted"> by {{post.postedBy.name}}</small></p>
             <p class="card-text "><small class="text-muted">Last updated {{post.createdAt | date: shortTime}}</small>
@@ -24,7 +24,7 @@
 
         </div>
 
- 
+
       </div>
 
 
@@ -32,10 +32,10 @@
     </div>
 
     <div class="col-md-3 mt-3 d-flex flex-column sideB">
-        <p class="pl-1"> Active Users </p>
-      <div class="card my-2 " *ngFor = "let user of userList">
-        
-        <li>   {{user.name}} </li>
+      <p class="pl-1"> Active Users </p>
+      <div class="card my-2 " *ngFor="let user of userList">
+
+        <li> {{user.name}} </li>
       </div>
 
 
@@ -43,5 +43,5 @@
     </div>
 
   </div>
-
-  
+</div>
+<app-footer></app-footer>
