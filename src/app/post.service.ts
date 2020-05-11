@@ -45,6 +45,11 @@ export class PostService {
     return this.http.get(url);
   }
 
+  getPostsByUserId(id) {
+    const url = `${this.path + '/post' + '/user'}/${id}`;
+    return this.http.get(url);
+  }
+
   deletePost(id) {
     const url = `${this.path + '/post'}/${id}`;
     return this.http.delete(url );
