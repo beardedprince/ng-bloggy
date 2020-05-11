@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  path: 'https://ng-bloggy.herokuapp.com/api/post'
+  path: 'https://ng-bloggy.herokuapp.com/api'
 };

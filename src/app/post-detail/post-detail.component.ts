@@ -11,7 +11,10 @@ import { FormGroup, FormBuilder, Validators} from '@angular/forms';
 export class PostDetailComponent implements OnInit {
 
   storyline: object;
+  comments: any;
   id: any;
+  isLoading = false;
+  isSuccess = false;
   commentForm: FormGroup;
   constructor(private route: ActivatedRoute, private postService: PostService, private fb: FormBuilder) { 
     this.commentForm = this.fb.group({
@@ -26,7 +29,7 @@ export class PostDetailComponent implements OnInit {
     console.log(this.id);
 
     this.postDetail(this.id);
-    // this.getPostComments();
+    this.getPostComments();
   }
 
 
@@ -40,19 +43,26 @@ export class PostDetailComponent implements OnInit {
   }
 
   postComment(id) {
+    this.isSuccess = true;
+    this.isLoading = true;
     console.log(this.commentForm.value);
     console.log(this.id);
     this.postService.sendComment(this.id, this.commentForm.value).subscribe(data => {
       console.log(data);
+      this.isSuccess = false;
+      this.getPostComments();
+      this.isLoading = false;
     }, err => {
       console.log('err occured here', err);
     });
+    this.commentForm.reset();
   }
 
-  // getPostComments() {
-  //   this.postService.getComment(this.id).subscribe(data => {
-  //     console.log(data);
-  //   });
-  // }
+  getPostComments() {
+    this.postService.getComment(this.id).subscribe(data => {
+      this.comments = data;
+      console.log('data gotten', data);
+    });
+  }
 
 }
