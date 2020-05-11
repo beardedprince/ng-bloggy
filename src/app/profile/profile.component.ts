@@ -48,6 +48,7 @@ export class ProfileComponent implements OnInit {
     console.log(this.profileForm.value);
     this.postService.createProfile(this.profileForm.value).subscribe(data => {
       this.getResult = data;
+      this.success = false;
       console.log('sdsds', this.getResult);
       localStorage.setItem('data', JSON.stringify(data));
       const get =  JSON.parse(localStorage.getItem('data'));
