@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PostService } from '../post.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 import { AuthsService } from '../auths.service';
 import { AngularFireAuth } from 'angularfire2/auth';
@@ -21,7 +21,8 @@ export class PostPageComponent implements OnInit {
   user: firebase.User;
   idnum: any;
 
-  constructor(private postService: PostService, private router: Router, private formBuilder: FormBuilder, private afAuth: AngularFireAuth,
+  constructor(private postService: PostService, private router: Router, private formBuilder: FormBuilder,
+              private afAuth: AngularFireAuth, private route: ActivatedRoute,
               private authService: AuthsService) {
     this.postForm = this.formBuilder.group({
       title: ['', Validators.required],
@@ -53,7 +54,9 @@ export class PostPageComponent implements OnInit {
   }
 
   getPosts() {
-    this.postService.getPost().subscribe( data => {
+    this.idnum =  JSON.parse(localStorage.getItem('data'));
+    console.log('localstorage', this.idnum._id ) ;
+    this.postService.getPostsByUserId(this.idnum._id).subscribe( data => {
       this.postList = data;
       console.log(this.postList);
     });
