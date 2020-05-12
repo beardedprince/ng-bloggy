@@ -22,14 +22,14 @@ export class LoginComponent  {
   email: string;
   password: string;
   fieldTextType: boolean;
-  message: any;
+
 
   constructor(  private afAuth: AngularFireAuth,
                 private formBuilder: FormBuilder,
                 private authService: AuthsService
                 ) {
     this.loginForm = this.formBuilder.group({
-      email: ['', Validators.required, Validators.email],
+      email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]]
 
     });
@@ -40,8 +40,8 @@ export class LoginComponent  {
       return;
     }
     this.submitted = true;
+    console.log(this.loginForm.value);
     this.authService.loginUser( this.loginForm.controls.email.value , this.loginForm.controls.password.value);
-    console.log('login message', this.message);
     console.log(this.loginForm.controls.email.value);
 }
 

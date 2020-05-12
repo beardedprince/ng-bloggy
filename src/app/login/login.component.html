@@ -6,13 +6,14 @@
       
       <div class="col-md-6 offset-md-3 border rounded shadow-sm my-5 ">
           <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-            <div class="alert alert-success my-2" *ngIf = "authService.msg "> network failure </div>
-            <div class="alert alert-success my-2" *ngIf = "success && !authService.msg && !authService.passwordmsg "> Login Successful </div>
+            <div class="alert alert-success my-2" *ngIf="success"> Login Successful</div>
+            <div class="alert alert-success my-2" *ngIf="loginForm.errors"> email and Paswword is invalid</div>
             <div class="form-group my-3">
                 <label for="email">Email</label>
-                <input type="email" name="email" id="email" class="form-control" formControlName= "email" placeholder="Enter your name">
-                  <div *ngIf = "submitted && loginForm.controls.email.errors" class="text-danger">
-                    <div *ngIf = "loginForm.controls.email.errors.required"> Username is required</div>
+                <input type="email" name="email" id="email" class="form-control" formControlName= "email" placeholder="Enter your email">
+                  <div *ngIf = "submitted && loginForm.controls.email.errors" class="text-danger" [ngClass]="{ 'is-invalid': submitted && loginForm.controls.email.errors }">
+                    <div *ngIf = "loginForm.controls.email.errors.required"> Email is required</div>
+                    <div *ngIf="loginForm.controls.email.errors.email">Invalid email pattern </div>
                   </div>
               </div>
               

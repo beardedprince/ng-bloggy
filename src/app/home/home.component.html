@@ -19,6 +19,7 @@
           <p class="card-title post-body" [routerLink]="['/post', post._id]"> {{post.postbody | truncate:250 }} </p>
           <div class="d-flex">
             <p class="card-text flex-fill "><small class="text-muted"> by {{post.postedBy.name}}</small></p>
+            <!-- <p class="card-text flex-fill "><small class="text-muted"> <i class=" far far fa-comment-dots"></i> comment count</small></p> -->
             <p class="card-text "><small class="text-muted">Last updated {{post.createdAt | date: shortTime}}</small>
           </div>
 
