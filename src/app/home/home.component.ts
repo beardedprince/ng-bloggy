@@ -56,6 +56,12 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  getCommentCount(id) {
+    this.postService.getCommentsCountById(id).subscribe(count => {
+      console.log('number', count);
+    })
+  }
+
 
   // getAvatar() {
   //   this.user.getAvatar().subscribe( data => {

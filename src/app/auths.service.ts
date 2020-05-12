@@ -12,9 +12,6 @@ import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 })
 export class AuthsService {
 
-  msg: any;
-  passwordmsg: any;
-
   constructor(private afAuth: AngularFireAuth, private router: Router, private db: AngularFireDatabase) { }
   // Login user
   loginUser(email: string, password: string) {
@@ -26,10 +23,7 @@ export class AuthsService {
         this.router.navigate(['/dashboard']);
       })
       .catch(err => {
-        console.log('Something went wrong:', err.message);
-        this.msg = err.message;
-        this.passwordmsg = err.message.password;
-        console.log('this message', this.msg);
+        console.log('Something went wrong:', err);
       });
   }
 

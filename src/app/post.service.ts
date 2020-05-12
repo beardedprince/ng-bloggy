@@ -70,4 +70,9 @@ export class PostService {
     const url = `${this.path + '/comments'}/${id}`;
     return this.http.get(url);
   }
+
+  getCommentsCountById(id) {
+    const url = `${this.path + '/comments' + '/count'}/${id}`;
+    return this.http.get(url);
+  }
 }

@@ -73,7 +73,7 @@ export class DashboardComponent implements OnInit  {
   }
 
   goToProfile()  {
-    alert('Sorry, profile can only be created once..');
+    this.router.navigate(['/dashboard']);
   }
 
   goToNewPost()  {

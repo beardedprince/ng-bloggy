@@ -28,25 +28,29 @@
                   <div class="form-row">
                     <div class="col">
                       <label for=""></label>
-                      <input type="text" name="username" id="username" class="form-control" formControlName = "name" placeholder="Name *">
-                      <div *ngIf = "submitted && profileForm.controls.username.errors" class="text-danger">
-                        <div *ngIf = "profileForm.controls.title.username.required">name is required </div>
+                      <input type="text" name="name" id="name" class="form-control" formControlName = "name" placeholder="Name *">
+                      <div *ngIf = "submitted && commentForm.controls.name.errors" class="text-danger">
+                        <div *ngIf = "commentForm.controls.name.errors.required">name is required </div>
                       </div>
                     </div>
                     <div class="col">
                       <label for=""></label>
                       <input type="text" name="name" id="name" class="form-control" formControlName = "email" placeholder="Email *">
-                      <div *ngIf = "submitted && profileForm.controls.name.errors" class="text-danger">
-                        <div *ngIf = "profileForm.controls.name.errors.required">name is required </div>
+                      <div *ngIf = "submitted && commentForm.controls.email.errors" class="text-danger">
+                        <div *ngIf = "commentForm.controls.email.errors.required">name is required </div>
+                        <div *ngIf = "commentForm.controls.email.errors.email">invalid email pattern </div>
                       </div>
                     </div>
                   </div>
                 </div>
                 <div class="form-group">
                   <textarea class="form-control" formControlName="comment" placeholder="comments..."></textarea>
+                  <div *ngIf = "submitted && commentForm.controls.comment.errors" class="text-danger">
+                    <div *ngIf = "commentForm.controls.comment.errors.required">Comment is required </div>
+                  </div>
                 </div>
 
-                <button class="btn btn-info my-3" type = "submit">Comment</button>
+                <button class="btn btn-info my-3" type="submit" [disabled]="commentForm.pristine" >Comment</button>
 
                 <div class="alert alert-success my-2 alert-dismissible fade show" role="alert" *ngIf = "isSuccess"> Comment successful
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
