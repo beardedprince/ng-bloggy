@@ -4,6 +4,7 @@ import {AngularFireAuth} from 'angularfire2/auth';
 import { FormBuilder, FormGroup, Validator, Validators} from '@angular/forms';
 import {AuthsService} from '../auths.service';
 import {Router} from '@angular/router';
+import { Meta, Title } from '@angular/platform-browser';
 
 
 
@@ -14,7 +15,7 @@ import {Router} from '@angular/router';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent  {
+export class LoginComponent implements OnInit  {
 
   loginForm: FormGroup;
   submitted = false;
@@ -26,13 +27,24 @@ export class LoginComponent  {
 
   constructor(  private afAuth: AngularFireAuth,
                 private formBuilder: FormBuilder,
-                private authService: AuthsService
+                private authService: AuthsService,
+                private meta: Meta, private title: Title
                 ) {
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]]
 
     });
+  }
+
+  ngOnInit() {
+    this.title.setTitle('Ng-bloggy | login');
+    this.meta.addTags([
+      {name: 'author', content: 'ng-bloggy'},
+      {name: 'description', content: 'Blog built and powerd by Angular on the FE.'},
+      {name: 'keywork', content: 'NG-bloggy, Blog, Angular Blog, Angular'},
+
+    ]);
   }
 
   onSubmit() {

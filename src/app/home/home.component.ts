@@ -40,6 +40,12 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.title.setTitle('Ng-Bloggy | Home');
+    this.meta.addTags([
+      {name: 'author', content: 'ng-bloggy'},
+      {name: 'description', content: 'Blog built and powerd by Angular on the FE.'},
+      {name: 'keywork', content: 'NG-bloggy, Blog, Angular Blog, Angular'},
+
+    ]);
     this.getPost();
     this.getUsers();
   }
@@ -59,13 +65,7 @@ export class HomeComponent implements OnInit {
   getUsers() {
     this.user.getUsers().subscribe( data => {
       this.userList = data;
-      console.log(this.userList);
-    });
-  }
-
-  getCommentCount(id) {
-    this.postService.getCommentsCountById(id).subscribe(count => {
-      console.log('number', count);
+      // console.log(this.userList);
     });
   }
 
