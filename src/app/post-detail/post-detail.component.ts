@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PostService } from '../post.service';
 import { FormGroup, FormBuilder, Validators} from '@angular/forms';
+import { Meta, Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-post-detail',
@@ -19,7 +20,9 @@ export class PostDetailComponent implements OnInit {
   tags: [];
 
   commentForm: FormGroup;
-  constructor(private route: ActivatedRoute, private postService: PostService, private fb: FormBuilder, private router: Router) {
+  constructor(private route: ActivatedRoute, private router: Router,
+              private postService: PostService, private fb: FormBuilder,
+              private meta: Meta, private title: Title ) {
     this.commentForm = this.fb.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
@@ -28,8 +31,15 @@ export class PostDetailComponent implements OnInit {
   }
 
   ngOnInit() {
+    // setting title and meta data for SEO
+    this.meta.addTags([
+      {name: 'author', content: 'ng-bloggy'},
+      {name: 'description', content: 'Blog built and powerd by Angular on the FE.'},
+      {name: 'keywork', content: 'NG-bloggy, Blog, Angular Blog, Angular'},
+
+    ]);
+
     this.id = this.route.snapshot.params.id;
-    console.log(this.id);
 
     this.postDetail(this.id);
     this.getPostComments();
@@ -39,7 +49,6 @@ export class PostDetailComponent implements OnInit {
   postDetail(id) {
     this.postService.getPostById(this.id).subscribe(data => {
       this.storyline = data;
-      console.log(this.storyline);
       this.tags = this.storyline.tags;
     }, err => {
       console.log('May Day!!', err);
@@ -55,7 +64,6 @@ export class PostDetailComponent implements OnInit {
     this.isLoading = true;
     console.log(this.commentForm.value);
     this.postService.sendComment(this.id, this.commentForm.value).subscribe(data => {
-      console.log(data);
       this.isSuccess = false;
       this.isLoading = false;
       this.submitted = false;
@@ -63,7 +71,6 @@ export class PostDetailComponent implements OnInit {
     }, err => {
       console.log('err occured here', err);
     });
-   
     this.commentForm.reset();
     
   }
@@ -71,7 +78,7 @@ export class PostDetailComponent implements OnInit {
   getPostComments() {
     this.postService.getComment(this.id).subscribe(data => {
       this.comments = data;
-      console.log('data gotten', data);
+      // console.log('data gotten', data);
     });
   }
 

@@ -39,7 +39,7 @@ export class PostPageComponent implements OnInit {
     console.log('post ', id);
     this.postService.deletePost(id).subscribe( (data: any) => {
        if (data.message) {
-         console.log('message', data.message);
+        //  console.log('message', data.message);
          this.getPosts();
          this.isLoading = false;
        }
@@ -49,16 +49,15 @@ export class PostPageComponent implements OnInit {
    }
 
   editPost(id) {
-    console.log('edit post id', id);
+    // console.log('edit post id', id);
     this.router.navigate(['/dashboard', 'post', 'edit', id]);
   }
 
   getPosts() {
     this.idnum =  JSON.parse(localStorage.getItem('data'));
-    console.log('localstorage', this.idnum._id ) ;
+    // console.log('localstorage', this.idnum._id ) ;
     this.postService.getPostsByUserId(this.idnum._id).subscribe( data => {
       this.postList = data;
-      console.log(this.postList);
     });
 
   }
@@ -67,7 +66,7 @@ export class PostPageComponent implements OnInit {
     this.idnum =  JSON.parse(localStorage.getItem('data'));
     console.log('localstorage', this.idnum._id ) ;
     this.router.navigate(['/dashboard', 'new-post', this.idnum._id]);
-    console.log('gotten id', this.idnum._id);
+    // console.log('gotten id', this.idnum._id);
   }
 
   goToProfile()  {

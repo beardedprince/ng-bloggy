@@ -6,6 +6,7 @@ import {AuthsService} from '../auths.service';
 import {PostService} from '../post.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { QuillEditorComponent } from 'ngx-quill';
+import { Title, Meta } from '@angular/platform-browser';
 
 
 
@@ -25,12 +26,11 @@ export class DashboardComponent implements OnInit  {
     height : '300px'
   };
   config = {
-    syntax: true,
     toolbar: [
       ['bold', 'italic', 'underline', 'link'],
       ['code-block']
     ]
-  };  
+  };
   id: any;
   idnum: any;
   chips: [];
@@ -41,7 +41,7 @@ export class DashboardComponent implements OnInit  {
               private authService: AuthsService,
               private postService: PostService,
               private router: Router,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute, private meta: Meta, private title: Title) {
     this.postForm = this.formBuilder.group({
       title: ['', Validators.required],
       postbody: ['', Validators.required],
@@ -51,6 +51,14 @@ export class DashboardComponent implements OnInit  {
    }
 
    ngOnInit() {
+    this.title.setTitle('Ng-bloggy | Dashboard');
+    this.meta.addTags([
+      {name: 'author', content: 'ng-bloggy'},
+      {name: 'description', content: 'Blog built and powerd by Angular on the FE.'},
+      {name: 'keywork', content: 'NG-bloggy, Blog, Angular Blog, Angular'},
+
+    ]);
+
     this.id = this.route.snapshot.params.id;
     console.log('activated Route', this.id);
    }

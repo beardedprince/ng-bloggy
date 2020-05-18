@@ -24,11 +24,10 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { QuillModule } from 'ngx-quill';
 import { TagInputModule } from 'ngx-chips';
-// import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
 // services
 import { PostService } from './post.service';
-import { NgxEditorModule } from 'ngx-editor';
+// import { NgxEditorModule } from 'ngx-editor';
 import { TruncatePipe } from './truncate.pipe';
 import { PostDetailComponent } from './post-detail/post-detail.component';
 
@@ -56,8 +55,7 @@ import { PostDetailComponent } from './post-detail/post-detail.component';
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     HttpClientModule,
-    // NgxSkeletonLoaderModule,
-    NgxEditorModule,
+    // NgxEditorModule,
     TagInputModule,
     QuillModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebase),
