@@ -14,6 +14,7 @@ export class PostService {
   postList: AngularFireList<any>;
 
   path  = environment.path;
+  post;
 
   constructor(private db: AngularFireDatabase, private http: HttpClient) { }
   // getPost(post) {

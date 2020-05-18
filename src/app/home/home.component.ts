@@ -3,6 +3,8 @@ import { PostService } from '../post.service';
 import {UserService} from '../user.service';
 import { ConnectionService } from 'ng-connection-service';
 import {Meta, Title} from '@angular/platform-browser';
+import {startWith} from 'rxjs/operators';
+import { observable, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -17,6 +19,8 @@ export class HomeComponent implements OnInit {
   userList: object;
   status = 'ONLINE';
   isConnected = true;
+  CACHE_KEY = 'homenews';
+  use = new Observable();
 
   constructor(private meta: Meta, private title: Title,
               private postService: PostService,
@@ -33,20 +37,23 @@ export class HomeComponent implements OnInit {
       }
     });
   }
-  
 
   ngOnInit() {
     this.title.setTitle('Ng-Bloggy | Home');
     this.getPost();
     this.getUsers();
-    // this.getAvatar();
   }
 
   getPost() {
     this.postService.getPost().subscribe( data => {
       this.posts = data;
-      console.log(this.posts);
+      localStorage[this.CACHE_KEY] = JSON.stringify(data);
+      // this.posts = this.use.pipe(
+      //   startWith(JSON.parse(localStorage[this.CACHE_KEY] || '[]' ))
+      //   );
+      // this.getCommentCount(this.id);
     });
+
   }
 
   getUsers() {
@@ -59,18 +66,8 @@ export class HomeComponent implements OnInit {
   getCommentCount(id) {
     this.postService.getCommentsCountById(id).subscribe(count => {
       console.log('number', count);
-    })
+    });
   }
-
-
-  // getAvatar() {
-  //   this.user.getAvatar().subscribe( data => {
-  //     this.avatars = data;
-  //     console.log(this.avatars);
-  //   });
-  // }
-
-
 
 
 }
