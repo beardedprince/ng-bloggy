@@ -23,6 +23,7 @@ import { EditPageComponent } from './edit-page/edit-page.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { QuillModule } from 'ngx-quill';
+import { TagInputModule } from 'ngx-chips';
 // import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
 // services
@@ -57,6 +58,7 @@ import { PostDetailComponent } from './post-detail/post-detail.component';
     HttpClientModule,
     // NgxSkeletonLoaderModule,
     NgxEditorModule,
+    TagInputModule,
     QuillModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebase),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })

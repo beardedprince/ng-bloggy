@@ -33,6 +33,8 @@ export class DashboardComponent implements OnInit  {
   };  
   id: any;
   idnum: any;
+  chips: [];
+  placeholder;
 
   constructor(private afAuth: AngularFireAuth,
               private formBuilder: FormBuilder,
@@ -42,7 +44,8 @@ export class DashboardComponent implements OnInit  {
               private route: ActivatedRoute) {
     this.postForm = this.formBuilder.group({
       title: ['', Validators.required],
-      postbody: ['', Validators.required]
+      postbody: ['', Validators.required],
+      tags: ['']
     });
     afAuth.authState.subscribe(user => this.user = user);
    }
@@ -85,4 +88,13 @@ export class DashboardComponent implements OnInit  {
 
   hidePreview(e) { console.log(e.getContent()); }
 
+  tags() {
+    this.placeholder = this.postForm.controls.tags.value;
+    console.log(this.placeholder);
+    if ( this.chips === null ) {
+      return;
+    } else {
+      // this.chips.push(this.placeholder);
+    }
+  }
 }

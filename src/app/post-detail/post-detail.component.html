@@ -4,9 +4,9 @@
     <div class="col-md-9 my-4 border rounded" >
       <div class="my-3">
         <h3 class="display-4"> {{storyline.title}}</h3>
-        <p><em>Posted by {{storyline.postedBy.name}} on {{storyline.createdAt | date}}</em> 
-        <span class="text-muted">  </span>
-        </p>
+        <p><em>Posted by {{storyline.postedBy.name}} on {{storyline.createdAt | date}}</em> </p>
+        <p><span class=" pr-2" *ngFor = "let tag of tags">  <a [routerLink]="[tag.value]" class="badge badge-info p-1"> {{tag.value}} </a>   </span></p>
+        
       </div>
 
     <p class="content mb-5">

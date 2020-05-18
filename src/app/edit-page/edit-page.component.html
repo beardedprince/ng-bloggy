@@ -44,6 +44,9 @@
               Post content is also required
             </div>
           </div>
+          <div class="form-group">
+            <tag-input formControlName = "tags" [maxItems]='5'></tag-input>
+          </div>
           <button class="btn btn-info my-3 mr-3" type="submit">Save</button>
           <button class="btn btn-danger my-3" type="submit" (click)="cancelUpdate()">
             Cancel

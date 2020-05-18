@@ -10,12 +10,14 @@ import { FormGroup, FormBuilder, Validators} from '@angular/forms';
 })
 export class PostDetailComponent implements OnInit {
 
-  storyline: object;
+  storyline: any;
   comments: any;
   id: any;
   isLoading = false;
   isSuccess = false;
   submitted = false;
+  tags: [];
+
   commentForm: FormGroup;
   constructor(private route: ActivatedRoute, private postService: PostService, private fb: FormBuilder, private router: Router) {
     this.commentForm = this.fb.group({
@@ -38,6 +40,7 @@ export class PostDetailComponent implements OnInit {
     this.postService.getPostById(this.id).subscribe(data => {
       this.storyline = data;
       console.log(this.storyline);
+      this.tags = this.storyline.tags;
     }, err => {
       console.log('May Day!!', err);
     });

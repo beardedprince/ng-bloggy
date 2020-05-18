@@ -24,7 +24,7 @@ export class EditPageComponent implements OnInit {
      ['bold', 'italic', 'underline', 'link'],
      ['code-block']
    ]
- }
+ };
 
 
   constructor(private formBuilder: FormBuilder, private route: ActivatedRoute,
@@ -44,21 +44,23 @@ export class EditPageComponent implements OnInit {
   createUpdateForm() {
     this.updatePostForm = this.formBuilder.group({
       title: ['', Validators.required],
-      postbody: ['', Validators.required]
+      postbody: ['', Validators.required],
+      tags: ['', Validators.required]
     });
   }
 
   setUpdateData(data: any) {
     this.updatePostForm = this.formBuilder.group({
       title : data.title,
-      postbody: data.postbody
+      postbody: data.postbody,
+      tags: data.tags
     });
   }
 
 
   getPostEdit(id: any) {
     this.postService.getPostById(id).subscribe( (data: any) => {
-      console.log('data yii', data);
+      console.log('data gotten', data);
       this.setUpdateData( data);
 
     }, err => {
