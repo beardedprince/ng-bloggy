@@ -6,6 +6,10 @@ import { auth } from 'firebase/app';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import {HttpClient } from '@angular/common/http';
 import { environment} from '../environments/environment';
+import {Posts } from './models/post';
+
+import {shareReplay} from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +18,7 @@ export class PostService {
   postList: AngularFireList<any>;
 
   path  = environment.path;
-  post;
+  posts$: Observable<Posts[]>;
 
   constructor(private db: AngularFireDatabase, private http: HttpClient) { }
   // getPost(post) {
@@ -37,8 +41,11 @@ export class PostService {
     return this.http.post(url, postForm);
   }
 
-  getPost() {
-    return this.http.get(this.path + '/post');
+  getPost(): Observable<Posts[]> {
+    if (!this.posts$) {
+      this.posts$ = this.http.get<Posts[]>(this.path + '/post').pipe(shareReplay(1));
+    }
+    return this.posts$;
   }
 
   getPostById(id) {

@@ -19,8 +19,6 @@ export class HomeComponent implements OnInit {
   userList: object;
   status = 'ONLINE';
   isConnected = true;
-  CACHE_KEY = 'homenews';
-  use = new Observable();
 
   constructor(private meta: Meta, private title: Title,
               private postService: PostService,
@@ -52,11 +50,6 @@ export class HomeComponent implements OnInit {
   getPost() {
     this.postService.getPost().subscribe( data => {
       this.posts = data;
-      localStorage[this.CACHE_KEY] = JSON.stringify(data);
-      // this.posts = this.use.pipe(
-      //   startWith(JSON.parse(localStorage[this.CACHE_KEY] || '[]' ))
-      //   );
-      // this.getCommentCount(this.id);
     });
 
   }
