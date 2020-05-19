@@ -11,8 +11,8 @@ export class UserService {
   path  = environment.path;
   constructor(private http: HttpClient) { }
 
-  getUsers() {
-    return this.http.get(this.path + '/users');
-  }
+  // getUsers() {
+  //   return this.http.get(this.path + '/users');
+  // }
 
 }

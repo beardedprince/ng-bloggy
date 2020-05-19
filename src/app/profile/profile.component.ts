@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
@@ -27,7 +28,10 @@ export class ProfileComponent implements OnInit {
     this.profileForm = this.formBuilder.group({
       name: ['', Validators.required],
       username: ['', Validators.required],
-      // avatar: [ '' ],
+      socials: this.formBuilder.group({
+        twitter: ['', Validators.required],
+        github: ['', Validators.required]
+      }),
       description: ['', Validators.required]
     });
 
@@ -52,12 +56,19 @@ export class ProfileComponent implements OnInit {
       // console.log('sdsds', this.getResult);
       localStorage.setItem('data', JSON.stringify(data));
       const get =  JSON.parse(localStorage.getItem('data'));
-      console.log('localstorage', get._id ) ;
+      // console.log('localstorage', get._id ) ;
       this.router.navigate(['/', 'dashboard', 'new-post', get._id]);
     }, err => {
       console.log(err);
     });
   }
+
+  // socials(): FormGroup {
+  //   return this.formBuilder.group({
+  //     github: ['', Validators.required],
+  //     twitter: ['', Validators.required],
+  //   });
+  // }
 
   giveAlert() {
     alert('please create a profile first');

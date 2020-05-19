@@ -24,37 +24,47 @@
               </button>
             </div>
 
-            <div class="form-group">
-              <div class="form-row">
+            
+              <div class="form-group">
+                <div class="form-row">
+                  <div class="col">
+                    <label for=""></label>
+                    <input type="text" name="username" id="username" class="form-control" formControlName = "username" placeholder="username *">
+                    <div *ngIf = "submitted && profileForm.controls.username.errors" class="text-danger">
+                      <div *ngIf = "profileForm.controls.username.errors.required">username is required </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <label for=""></label>
+                    <input type="text" name="name" id="name" class="form-control" formControlName = "name" placeholder="Your name *">
+                    <div *ngIf = "submitted && profileForm.controls.name.errors" class="text-danger">
+                      <div *ngIf = "profileForm.controls.name.errors.required">name is required </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+
+            <div class="form-group" >
+              <div class="form-row" formGroupName="socials">
                 <div class="col">
                   <label for=""></label>
-                  <input type="text" name="username" id="username" class="form-control" formControlName = "username" placeholder="username">
-                  <div *ngIf = "submitted && profileForm.controls.username.errors" class="text-danger">
-                    <div *ngIf = "profileForm.controls.title.username.required">username is required </div>
-                  </div>
+                  <input type="text" name="twitter" id="twitter" class="form-control" formControlName= "twitter" placeholder="@ twitter handle">
+                  <!-- <div *ngIf = "submitted && profileForm.controls.twitter.errors" class="text-danger">
+                    <div *ngIf = "profileForm.controls.twitter.errors.required">username is required </div>
+                  </div> -->
                 </div>
                 <div class="col">
                   <label for=""></label>
-                  <input type="text" name="name" id="name" class="form-control" formControlName = "name" placeholder="Your name">
-                  <div *ngIf = "submitted && profileForm.controls.name.errors" class="text-danger">
-                    <div *ngIf = "profileForm.controls.name.errors.required">name is required </div>
-                  </div>
+                  <input type="text" name="github" id="github" class="form-control" formControlName= "github" placeholder="Github handle">
+                  <!-- <div *ngIf = "submitted && profileForm.controls.github.errors" class="text-danger">
+                    <div *ngIf = "profileForm.controls.github.errors.required">name is required </div>
+                  </div> -->
                 </div>
               </div>
             </div>
 
-             <!-- <div class="form-group">
-                <label for="exampleFormControlFile1">Upload Avatar</label>
-                <input type="file" class="form-control-file" id="exampleFormControlFile1" formControlName = "avatar" >
-                <div class="custom-file">
-                  <input type="file" class="custom-file-input" id="validatedCustomFile" formControlName = "avatar" ng2FileSelect [uploader]="uploader" required >
-                  <label class="custom-file-label" for="validatedCustomFile">Select Avatar...</label>
-                  <div class="invalid-feedback">Example invalid custom file feedback</div>
-                </div>
-              </div> -->
-
-            
-
+             
               <div class="form-group">
                 <textarea name="post" id="post" class="form-control" formControlName="description" placeholder="enter brief information about yourself"></textarea>
                 <div *ngIf = "submitted && profileForm.controls.description.errors" class="text-danger">
@@ -75,4 +85,3 @@
    
 </section>
 </div>
-
