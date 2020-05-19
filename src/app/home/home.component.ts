@@ -47,7 +47,6 @@ export class HomeComponent implements OnInit {
 
     ]);
     this.getPost();
-    this.getUsers();
   }
 
   getPost() {
@@ -62,12 +61,12 @@ export class HomeComponent implements OnInit {
 
   }
 
-  getUsers() {
-    this.user.getUsers().subscribe( data => {
-      this.userList = data;
-      // console.log(this.userList);
-    });
-  }
+  // getUsers() {
+  //   this.user.getUsers().subscribe( data => {
+  //     this.userList = data;
+  //     // console.log(this.userList);
+  //   });
+  // }
 
 
 }
