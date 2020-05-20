@@ -30,6 +30,8 @@ import { PostService } from './post.service';
 // import { NgxEditorModule } from 'ngx-editor';
 import { TruncatePipe } from './truncate.pipe';
 import { PostDetailComponent } from './post-detail/post-detail.component';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
+import { PreviewComponent } from './preview/preview.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +49,8 @@ import { PostDetailComponent } from './post-detail/post-detail.component';
     ProfileComponent,
     TruncatePipe,
     PostDetailComponent,
+    EditProfileComponent,
+    PreviewComponent,
   ],
   imports: [
     BrowserModule,

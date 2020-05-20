@@ -69,9 +69,7 @@ export class PostPageComponent implements OnInit {
     // console.log('gotten id', this.idnum._id);
   }
 
-  goToProfile()  {
-    alert('Sorry, profile can only be created once..');
-  }
+  
 
   // editIssue(id: string) {
   //   // console.log('item: ', id);

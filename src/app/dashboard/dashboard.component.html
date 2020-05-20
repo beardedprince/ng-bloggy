@@ -9,7 +9,7 @@
                      <p>Dashboard Manager</p>
                     </div>
                     <ul class="list-group list-group-flush">
-                      <li class="list-group-item" (click)="goToProfile()" ><i class="fa fa-user pr-3"></i> Profile</li>
+                      <li class="list-group-item" [routerLink]="['/dashboard','profile']" ><i class="fa fa-user pr-3"></i> Profile</li>
                       <li class="list-group-item" (click)="goToNewPost()" ><i class="fa fa-user pr-3"></i> Create Post</li>
                       <li class="list-group-item" [routerLink] = "['/dashboard', 'my-post']"><i class="fa fa-edit pr-3"></i> Timeline</li>
                     </ul>

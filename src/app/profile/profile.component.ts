@@ -5,6 +5,7 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { AuthsService } from '../auths.service';
 import { PostService } from '../post.service';
 import { Router } from '@angular/router';
+import { UserService } from '../user.service';
 
 
 @Component({
@@ -23,7 +24,7 @@ export class ProfileComponent implements OnInit {
   constructor(private afAuth: AngularFireAuth,
               private formBuilder: FormBuilder,
               private authService: AuthsService,
-              private postService: PostService,
+              private user: UserService,
               private router: Router) {
     this.profileForm = this.formBuilder.group({
       name: ['', Validators.required],
@@ -50,7 +51,7 @@ export class ProfileComponent implements OnInit {
       return;
     }
     console.log(this.profileForm.value);
-    this.postService.createProfile(this.profileForm.value).subscribe(data => {
+    this.user.createProfile(this.profileForm.value).subscribe(data => {
       this.getResult = data;
       this.success = false;
       // console.log('sdsds', this.getResult);

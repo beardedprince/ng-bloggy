@@ -32,9 +32,7 @@ export class PostService {
   //   });
   // }
 
-  createProfile(profileForm) {
-    return this.http.post(this.path + '/users', profileForm);
-  }
+  
 
   sendPost(id: any, postForm) {
     const url = `${this.path + '/post'}/${id}`;

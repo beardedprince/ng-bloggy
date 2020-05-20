@@ -11,12 +11,16 @@ import { PostPageComponent } from './post-page/post-page.component';
 import { EditPageComponent } from './edit-page/edit-page.component';
 import { ProfileComponent } from './profile/profile.component';
 import { PostDetailComponent } from './post-detail/post-detail.component';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
+import { PreviewComponent } from './preview/preview.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'login',  component: LoginComponent },
   {path: 'register', component: RegisterComponent },
   {path: 'dashboard', component: ProfileComponent },
+  {path: 'dashboard/profile', component: PreviewComponent },
+  {path: 'dashboard/edit-profile', component: EditProfileComponent },
   // {path: 'dashboard/new-post', component: DashboardComponent },
   {path: 'dashboard/new-post/:id', component: DashboardComponent },
   {path: 'dashboard/my-post', component: PostPageComponent },

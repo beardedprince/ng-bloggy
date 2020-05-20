@@ -83,9 +83,7 @@ export class DashboardComponent implements OnInit  {
     this.afAuth.auth.signOut();
   }
 
-  goToProfile()  {
-    this.router.navigate(['/dashboard']);
-  }
+  
 
   goToNewPost()  {
     this.idnum =  JSON.parse(localStorage.getItem('data'));

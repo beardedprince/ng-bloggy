@@ -11,8 +11,17 @@ export class UserService {
   path  = environment.path;
   constructor(private http: HttpClient) { }
 
-  // getUsers() {
-  //   return this.http.get(this.path + '/users');
-  // }
+  createProfile(profileForm) {
+    return this.http.post(this.path + '/users', profileForm);
+  }
 
+  getUserDetails(id) {
+    const url = `${this.path + '/users'}/${id}`;
+    return this.http.get(url);
+  }
+
+  editProfileByID(id: any, editProfileForm) {
+    const url = `${this.path + '/post'}/${id}`;
+    return this.http.put(url, editProfileForm );
+  }
 }
