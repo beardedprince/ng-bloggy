@@ -20,7 +20,7 @@ export class AuthsService {
       .signInWithEmailAndPassword(email, password)
       .then(value => {
         console.log('Nice, it worked!');
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['/dashboard', 'profile']);
       })
       .catch(err => {
         console.log('Something went wrong:', err);
@@ -57,7 +57,7 @@ export class AuthsService {
     this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider())
     .then( () => {
       // console.log('works wella');
-      this.router.navigate(['/dashboard']);
+      this.router.navigate(['/dashboard', 'profile']);
     });
   }
 

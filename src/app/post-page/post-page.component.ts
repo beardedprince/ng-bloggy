@@ -69,7 +69,6 @@ export class PostPageComponent implements OnInit {
     // console.log('gotten id', this.idnum._id);
   }
 
-  
 
   // editIssue(id: string) {
   //   // console.log('item: ', id);
