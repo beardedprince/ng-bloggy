@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControlName, NgForm} from '@angular/forms';
-import {AuthsService} from '../auths.service';
+import { AuthsService } from 'src/app/auths.service';
 import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
