@@ -21,7 +21,12 @@ export class UserService {
   }
 
   editProfileByID(id: any, editProfileForm) {
-    const url = `${this.path + '/post'}/${id}`;
+    const url = `${this.path + '/users'}/${id}`;
     return this.http.put(url, editProfileForm );
+  }
+
+  deleteUserAccountbyID(id) {
+    const url = `${this.path + '/users'}/${id}`;
+    return this.http.get(url);
   }
 }
