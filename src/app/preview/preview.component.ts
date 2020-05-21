@@ -26,7 +26,6 @@ export class PreviewComponent implements OnInit {
     this.idnum = JSON.parse(localStorage.getItem('data'));
     this.user.getUserDetails(this.idnum._id).subscribe(data => {
       this.profile = data;
-      console.log(data);
     }, err => {
       console.log('err', err);
     });
@@ -34,9 +33,23 @@ export class PreviewComponent implements OnInit {
 
   goToNewPost()  {
     this.idnum =  JSON.parse(localStorage.getItem('data'));
-    console.log('localstorage', this.idnum._id ) ;
     this.router.navigate(['/dashboard', 'new-post', this.idnum._id]);
-    console.log('gotten id', this.idnum._id);
   }
 
+  deleteAccount() {
+    const affirm = confirm('Are you sure you want to exit??');
+    if (affirm === true) {
+      this.idnum = JSON.parse(localStorage.getItem('data'));
+      this.user.deleteUserAccountbyID(this.idnum._id).subscribe( data => {
+      localStorage.removeItem('data');
+      this.router.navigate(['/']);
+    }, err => {
+      console.log('Err occured here', err);
+    });
+    } else {
+      this.router.navigateByUrl('/', {skipLocationChange: true})
+      .then(() => this.router.navigate(['/dashboard', 'profile']));
+    }
+
+  }
 }
