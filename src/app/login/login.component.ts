@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import * as firebase from 'firebase';
 import {AngularFireAuth} from 'angularfire2/auth';
 import { FormBuilder, FormGroup, Validator, Validators} from '@angular/forms';
-import {AuthsService} from '../auths.service';
 import {Router} from '@angular/router';
 import { Meta, Title } from '@angular/platform-browser';
+import { AuthsService } from 'src/app/auths.service';
 
 
 
