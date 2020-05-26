@@ -42,6 +42,7 @@ export class PreviewComponent implements OnInit {
       this.idnum = JSON.parse(localStorage.getItem('data'));
       this.user.deleteUserAccountbyID(this.idnum._id).subscribe( data => {
       localStorage.removeItem('data');
+      this.authService.logOutUser();
       this.router.navigate(['/']);
     }, err => {
       console.log('Err occured here', err);
