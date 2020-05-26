@@ -33,6 +33,7 @@ export class ProfileComponent implements OnInit {
         twitter: ['', Validators.required],
         github: ['', Validators.required]
       }),
+      avatar: ['', Validators.required],
       description: ['', Validators.required]
     });
 
@@ -64,12 +65,6 @@ export class ProfileComponent implements OnInit {
     });
   }
 
-  // socials(): FormGroup {
-  //   return this.formBuilder.group({
-  //     github: ['', Validators.required],
-  //     twitter: ['', Validators.required],
-  //   });
-  // }
 
   giveAlert() {
     alert('please create a profile first');
