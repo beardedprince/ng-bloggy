@@ -19,7 +19,7 @@ export class PostDetailComponent implements OnInit {
   isLoading = false;
   isSuccess = false;
   submitted = false;
-  tags: [];
+  tag: any;
 
   commentForm: FormGroup;
   constructor(private route: ActivatedRoute, private router: Router,
@@ -31,7 +31,6 @@ export class PostDetailComponent implements OnInit {
       comment: ['', [Validators.required, Validators.minLength(1)]]
     });
     this.postdetail = [];
-    
   }
 
   ngOnInit() {
@@ -48,8 +47,6 @@ export class PostDetailComponent implements OnInit {
     this.getPostComments();
     // tslint:disable-next-line:no-string-literal
     this.postdetail = this.route.snapshot.data['postdetial']; // post detials gotten using resolvers
-    this.tags = this.postdetail.tags;
-    
   }
 
 
