@@ -1,16 +1,20 @@
 <app-navbar> </app-navbar>
+
 <div class="container">
+
+  
   <div class="row">
+
     <div class="col-md-9 my-4 border rounded" >
       <div class="my-3">
-        <h3 class="display-4"> {{storyline.title}}</h3>
-        <p><em>Posted by {{storyline.postedBy.name}} on {{storyline.createdAt | date}}</em> </p>
+        <h3 class="display-5"> {{postdetail?.title}}</h3>
+        <p><em>Posted by {{postdetail?.postedBy.name}} on {{postdetail?.createdAt | date}}</em> </p>
         <p><span class=" pr-2" *ngFor = "let tag of tags">  <a [routerLink]="[tag.value]" class="badge badge-info p-1"> {{tag.value}} </a>   </span></p>
         
       </div>
 
     <p class="content mb-5">
-      {{storyline.postbody}}
+      {{postdetail.postbody}}
     </p>
 
     <!-- comment system -->
@@ -85,17 +89,18 @@
 
 
     </div>
+
     <div class="col-md-3 my-4">
       <div class="card border-info">
-        <p class="text-center h4 my-2"> {{storyline.postedBy.name}} <br> <span class="h5 text-muted py-2">  @{{storyline.postedBy.username}}</span>  </p>
+        <p class="text-center h4 my-2"> {{postdetail.postedBy.name}} <br> <span class="h5 text-muted py-2">  @{{postdetail.postedBy.username}}</span>  </p>
         <p class="text-center text-muted"> 
-            <a href="https://www.twitter.com/{{storyline.postedBy.socials[0].twitter}}" target="_blank" rel="noopener noreferrer"  class="fab fa-twitter text-info px-2"> </a>
-            <a href="https://www.github.com/{{storyline.postedBy.socials[0].github}}" target="_blank" rel="noopener noreferrer" class="fab fa-github text-muted px-2"> </a>
+            <a href="https://www.twitter.com/{{postdetail.postedBy.socials[0].twitter}}" target="_blank" rel="noopener noreferrer"  class="fab fa-twitter text-info px-2"> </a>
+            <a href="https://www.github.com/{{postdetail.postedBy.socials[0].github}}" target="_blank" rel="noopener noreferrer" class="fab fa-github text-muted px-2"> </a>
         </p>
         
-         <p class="px-2 text-muted"> Date joined: {{storyline.date | date:short}} </p> 
+         <p class="px-2 text-muted"> Date joined: {{postdetail.date | date:short}} </p> 
         <hr class="pl-2">
-         <p class="p-2"> {{storyline.postedBy.description}} </p>
+         <p class="p-2"> {{postdetail.postedBy.description}} </p>
         <button class="btn btn-info my-3 mx-4"> Follow </button>
       </div>
     </div>

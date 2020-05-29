@@ -13,6 +13,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { PostDetailComponent } from './post-detail/post-detail.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { PreviewComponent } from './preview/preview.component';
+import { PostResolverService } from './resolvers/post-resolver.service';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -27,7 +28,7 @@ const routes: Routes = [
   {path: 'dashboard/post/edit', component: EditPageComponent },
   {path: 'dashboard/post/edit/:id', component: EditPageComponent },
   {path: 'forgotpassword', component: ForgotpasswordComponent },
-  {path: 'post/:id', component: PostDetailComponent},
+  {path: 'post/:id', component: PostDetailComponent, resolve: { postdetial: PostResolverService } },
   {path: '**', component: NotfoundComponent },
 ];
 
