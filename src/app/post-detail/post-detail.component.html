@@ -9,7 +9,7 @@
       <div class="my-3">
         <h3 class="display-5"> {{postdetail?.title}}</h3>
         <p><em>Posted by {{postdetail?.postedBy.name}} on {{postdetail?.createdAt | date}}</em> </p>
-        <p><span class=" pr-2" *ngFor = "let tag of tags">  <a [routerLink]="[tag.value]" class="badge badge-info p-1"> {{tag.value}} </a>   </span></p>
+        <p><span class=" pr-2" *ngFor = "let tag of postdetail.tags">  <a [routerLink]="[tag.value]" class="badge badge-info p-1"> {{tag.value}} </a>   </span></p>
         
       </div>
 

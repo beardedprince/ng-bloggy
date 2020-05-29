@@ -40,6 +40,7 @@ export class PreviewComponent implements OnInit {
     const affirm = confirm('Are you sure you want to exit??');
     if (affirm === true) {
       this.idnum = JSON.parse(localStorage.getItem('data'));
+
       this.user.deleteUserAccountbyID(this.idnum._id).subscribe( data => {
       localStorage.removeItem('data');
       this.authService.logOutUser();
