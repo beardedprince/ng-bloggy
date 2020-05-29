@@ -33,7 +33,7 @@ export class ProfileComponent implements OnInit {
         twitter: ['', Validators.required],
         github: ['', Validators.required]
       }),
-      avatar: ['', Validators.required],
+      avatar: [''],
       description: ['', Validators.required]
     });
 
@@ -45,6 +45,15 @@ export class ProfileComponent implements OnInit {
     const get =  JSON.parse(localStorage.getItem('data'));
     console.log('localstorage', get._id ) ;
  }
+
+
+ uploadFile(event) {
+    const file = (event.target as HTMLInputElement).files[0].name;
+    this.profileForm.patchValue({
+      avatar: file
+    });
+    this.profileForm.get('avatar').updateValueAndValidity();
+  }
 
   submitPost(post) {
     this.submitted = true;
@@ -64,6 +73,8 @@ export class ProfileComponent implements OnInit {
       console.log(err);
     });
   }
+
+  
 
 
   giveAlert() {

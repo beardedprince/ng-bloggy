@@ -5,6 +5,7 @@ import { ConnectionService } from 'ng-connection-service';
 import {Meta, Title} from '@angular/platform-browser';
 import {startWith} from 'rxjs/operators';
 import { observable, Observable } from 'rxjs';
+import { RouterEvent, NavigationStart, NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -19,10 +20,11 @@ export class HomeComponent implements OnInit {
   userList: object;
   status = 'ONLINE';
   isConnected = true;
+  isLoader: boolean;
 
   constructor(private meta: Meta, private title: Title,
               private postService: PostService,
-              private user: UserService,
+              private user: UserService, private router: Router,
               private connectionService: ConnectionService) {
     this.connectionService.monitor().subscribe(isConnected => {
       this.isConnected = isConnected;
@@ -44,7 +46,23 @@ export class HomeComponent implements OnInit {
       {name: 'keywork', content: 'NG-bloggy, Blog, Angular Blog, Angular'},
 
     ]);
+    this.routerEvents();
     this.getPost();
+  }
+
+  routerEvents() {
+    this.router.events.subscribe((event: RouterEvent) => {
+      switch (true) {
+        case event instanceof NavigationStart: {
+          this.isLoader = true;
+          break;
+        }
+        case event instanceof NavigationEnd: {
+          this.isLoader = false;
+          break;
+        }
+      }
+    });
   }
 
   getPost() {

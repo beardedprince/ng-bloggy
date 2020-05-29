@@ -20,6 +20,12 @@ import { FooterComponent } from './footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PostPageComponent } from './post-page/post-page.component';
 import { EditPageComponent } from './edit-page/edit-page.component';
+import { PostDetailComponent } from './post-detail/post-detail.component';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
+import { PreviewComponent } from './preview/preview.component';
+
+
+
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { QuillModule } from 'ngx-quill';
@@ -29,9 +35,6 @@ import { TagInputModule } from 'ngx-chips';
 import { PostService } from './post.service';
 // import { NgxEditorModule } from 'ngx-editor';
 import { TruncatePipe } from './truncate.pipe';
-import { PostDetailComponent } from './post-detail/post-detail.component';
-import { EditProfileComponent } from './edit-profile/edit-profile.component';
-import { PreviewComponent } from './preview/preview.component';
 
 @NgModule({
   declarations: [

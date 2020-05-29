@@ -3,6 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { PostService } from '../post.service';
 import { FormGroup, FormBuilder, Validators} from '@angular/forms';
 import { Meta, Title} from '@angular/platform-browser';
+import {Postdetail} from '../models/postdetail';
+
 
 @Component({
   selector: 'app-post-detail',
@@ -10,7 +12,7 @@ import { Meta, Title} from '@angular/platform-browser';
   styleUrls: ['./post-detail.component.css']
 })
 export class PostDetailComponent implements OnInit {
-
+  postdetail: Postdetail[];
   storyline: any;
   comments: any;
   id: any;
@@ -28,6 +30,8 @@ export class PostDetailComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       comment: ['', [Validators.required, Validators.minLength(1)]]
     });
+    this.postdetail = [];
+    
   }
 
   ngOnInit() {
@@ -40,20 +44,24 @@ export class PostDetailComponent implements OnInit {
     ]);
 
     this.id = this.route.snapshot.params.id;
-
-    this.postDetail(this.id);
+    // this.postDetail(this.id);
     this.getPostComments();
+    // tslint:disable-next-line:no-string-literal
+    this.postdetail = this.route.snapshot.data['postdetial']; // post detials gotten using resolvers
+    this.tags = this.postdetail.tags;
+    
   }
 
 
-  postDetail(id) {
-    this.postService.getPostById(this.id).subscribe(data => {
-      this.storyline = data;
-      this.tags = this.storyline.tags;
-    }, err => {
-      console.log('May Day!!', err);
-    });
-  }
+
+  // postDetail(id) {
+  //   this.postService.getPostById(this.id).subscribe(data => {
+  //     this.storyline = data;
+  //     this.tags = this.storyline.tags;
+  //   }, err => {
+  //     console.log('May Day!!', err);
+  //   });
+  // }
 
   postComment(id ) {
     this.submitted = true;
@@ -72,13 +80,12 @@ export class PostDetailComponent implements OnInit {
       console.log('err occured here', err);
     });
     this.commentForm.reset();
-    
+
   }
 
   getPostComments() {
     this.postService.getComment(this.id).subscribe(data => {
       this.comments = data;
-      // console.log('data gotten', data);
     });
   }
 

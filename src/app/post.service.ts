@@ -7,6 +7,7 @@ import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import {HttpClient } from '@angular/common/http';
 import { environment} from '../environments/environment';
 import {Posts } from './models/post';
+import {Postdetail} from './models/postdetail';
 
 import {shareReplay} from 'rxjs/operators';
 import { Observable } from 'rxjs';
@@ -32,7 +33,6 @@ export class PostService {
   //   });
   // }
 
-  
 
   sendPost(id: any, postForm) {
     const url = `${this.path + '/post'}/${id}`;
@@ -48,7 +48,7 @@ export class PostService {
 
   getPostById(id) {
     const url = `${this.path + '/post'}/${id}`;
-    return this.http.get(url);
+    return this.http.get<Postdetail[]>(url);
   }
 
   getPostsByUserId(id) {
