@@ -19,6 +19,7 @@ export class PostService {
   postList: AngularFireList<any>;
 
   path  = environment.path;
+  API_KEY = 'https://api.unsplash.com/photos/random?client_id=136222c8b132b74883244565206f1d148f687eb7042057ff429cec534d55d822';
   posts$: Observable<Posts[]>;
 
   constructor(private db: AngularFireDatabase, private http: HttpClient) { }
@@ -80,5 +81,9 @@ export class PostService {
   getCommentsCountById(id) {
     const url = `${this.path + '/comments' + '/count'}/${id}`;
     return this.http.get(url);
+  }
+
+  getSingleImage() {
+    return this.http.get(this.API_KEY);
   }
 }

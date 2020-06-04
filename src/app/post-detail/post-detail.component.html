@@ -14,7 +14,7 @@
       </div>
 
     <p class="content mb-5">
-      {{postdetail.postbody}}
+      {{postdetail?.postbody}}
     </p>
 
     <!-- comment system -->
@@ -68,7 +68,7 @@
          
       </div>
 
-          <div class="col-md-12" *ngFor = "let unit of comments.message">
+          <div class="col-md-12" *ngFor = "let unit of comments?.message">
               <div class="card my-2">
                 <p class="px-2"> {{unit.comment}} </p>
                 
@@ -92,15 +92,15 @@
 
     <div class="col-md-3 my-4">
       <div class="card border-info">
-        <p class="text-center h4 my-2"> {{postdetail.postedBy.name}} <br> <span class="h5 text-muted py-2">  @{{postdetail.postedBy.username}}</span>  </p>
+        <p class="text-center h4 my-2"> {{postdetail?.postedBy.name}} <br> <span class="h5 text-muted py-2 username" routerLink = "/@{{postdetail.postedBy.username}}">  @{{postdetail.postedBy.username}}</span>  </p>
         <p class="text-center text-muted"> 
-            <a href="https://www.twitter.com/{{postdetail.postedBy.socials[0].twitter}}" target="_blank" rel="noopener noreferrer"  class="fab fa-twitter text-info px-2"> </a>
-            <a href="https://www.github.com/{{postdetail.postedBy.socials[0].github}}" target="_blank" rel="noopener noreferrer" class="fab fa-github text-muted px-2"> </a>
+            <a href="https://www.twitter.com/{{postdetail?.postedBy.socials[0].twitter}}" target="_blank" rel="noopener noreferrer"  class="fab fa-twitter text-info px-2"> </a>
+            <a href="https://www.github.com/{{postdetail?.postedBy.socials[0].github}}" target="_blank" rel="noopener noreferrer" class="fab fa-github text-muted px-2"> </a>
         </p>
         
-         <p class="px-2 text-muted"> Date joined: {{postdetail.date | date:short}} </p> 
+         <p class="px-2 text-muted"> Date joined: {{postdetail?.date | date:short}} </p> 
         <hr class="pl-2">
-         <p class="p-2"> {{postdetail.postedBy.description}} </p>
+         <p class="p-2"> {{postdetail?.postedBy.description}} </p>
         <button class="btn btn-info my-3 mx-4"> Follow </button>
       </div>
     </div>

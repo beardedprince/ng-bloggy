@@ -43,22 +43,23 @@ export class PostDetailComponent implements OnInit {
     ]);
 
     this.id = this.route.snapshot.params.id;
-    // this.postDetail(this.id);
+    this.postDetail(this.id);
     this.getPostComments();
     // tslint:disable-next-line:no-string-literal
     this.postdetail = this.route.snapshot.data['postdetial']; // post detials gotten using resolvers
+
   }
 
 
 
-  // postDetail(id) {
-  //   this.postService.getPostById(this.id).subscribe(data => {
-  //     this.storyline = data;
-  //     this.tags = this.storyline.tags;
-  //   }, err => {
-  //     console.log('May Day!!', err);
-  //   });
-  // }
+  postDetail(id) {
+    this.postService.getPostById(this.id).subscribe(result => {
+      localStorage.setItem('store', JSON.stringify(result));
+
+    }, err => {
+      console.log('May Day!!', err);
+    });
+  }
 
   postComment(id ) {
     this.submitted = true;
@@ -84,6 +85,10 @@ export class PostDetailComponent implements OnInit {
     this.postService.getComment(this.id).subscribe(data => {
       this.comments = data;
     });
+  }
+
+  publicView() {
+    // this.router.navigate(['@/', this.postdetail.postedBy.username]);
   }
 
 }
