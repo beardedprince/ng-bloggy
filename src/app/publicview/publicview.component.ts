@@ -18,7 +18,7 @@ export class PublicviewComponent implements OnInit {
 
   ngOnInit() {
     this.getProfile();
-    // this.getSingleProfileImage();
+    this.getSingleProfileImage();
   }
 
   getProfile() {
