@@ -35,6 +35,7 @@ import { TagInputModule } from 'ngx-chips';
 import { PostService } from './post.service';
 // import { NgxEditorModule } from 'ngx-editor';
 import { TruncatePipe } from './truncate.pipe';
+import { PublicviewComponent } from './publicview/publicview.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { TruncatePipe } from './truncate.pipe';
     PostDetailComponent,
     EditProfileComponent,
     PreviewComponent,
+    PublicviewComponent,
   ],
   imports: [
     BrowserModule,

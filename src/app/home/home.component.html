@@ -14,12 +14,12 @@
   <div class="row">
     <div class="col-md-6 " *ngFor="let post of posts ">
       <div class="card my-3  custom ">
-          <h4 class="title "> {{post.title}} </h4>
+          <h4 class="title "> <a class="post-title"   [routerLink]="['/post', post._id]">{{post.title}} </a> </h4>
         <div class="card-body">
           <p class="card-title post-body" [routerLink]="['/post', post._id]"> {{post.postbody | truncate:250 }} </p> 
           <hr>
           <div class="d-flex">
-            <p class="card-text flex-fill "><small class="text-muted"> by {{post.postedBy.name}}</small></p>
+            <p class="card-text flex-fill "><small class="text-muted username" > by {{post.postedBy.name}}</small></p>
             <!-- <p class="card-text flex-fill "><small class="text-muted"> <i class=" far far fa-comment-dots"></i> comment count</small></p> -->
             <p class="card-text "><small class="text-muted"> {{post.createdAt | date: shortTime}}</small>
           </div>

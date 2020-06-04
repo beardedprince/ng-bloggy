@@ -1,3 +1,7 @@
 .content {
     font-family: tahoma;
 }
+
+.username {
+    cursor: pointer;
+}

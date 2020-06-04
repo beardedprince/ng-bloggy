@@ -47,12 +47,13 @@ export class ProfileComponent implements OnInit {
  }
 
 
- uploadFile(event) {
-    const file = (event.target as HTMLInputElement).files[0].name;
-    this.profileForm.patchValue({
-      avatar: file
-    });
-    this.profileForm.get('avatar').updateValueAndValidity();
+
+  uploadFile(event: any) {
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      console.log('file', file);
+      this.profileForm.get('avatar').setValue(file);
+    }
   }
 
   submitPost(post) {
@@ -74,7 +75,6 @@ export class ProfileComponent implements OnInit {
     });
   }
 
-  
 
 
   giveAlert() {

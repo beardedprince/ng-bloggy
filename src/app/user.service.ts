@@ -12,7 +12,7 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   createProfile(profileForm) {
-    return this.http.post(this.path + '/users', profileForm);
+    return this.http.post<any>(this.path + '/users', profileForm);
   }
 
   getUserDetails(id) {
