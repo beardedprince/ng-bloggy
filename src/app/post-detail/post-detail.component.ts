@@ -69,6 +69,7 @@ export class PostDetailComponent implements OnInit {
     this.isSuccess = true;
     this.isLoading = true;
     console.log(this.commentForm.value);
+    
     this.postService.sendComment(this.id, this.commentForm.value).subscribe(data => {
       this.isSuccess = false;
       this.isLoading = false;
