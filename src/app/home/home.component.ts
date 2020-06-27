@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener, HostBinding } from '@angular/core';
 import { PostService } from '../post.service';
 import {UserService} from '../user.service';
 import { ConnectionService } from 'ng-connection-service';
@@ -21,6 +21,21 @@ export class HomeComponent implements OnInit {
   status = 'ONLINE';
   isConnected = true;
   isLoader: boolean;
+
+  isShow: boolean;
+  topPosToStartShowing = 100;
+
+  @HostListener('window:scroll')
+  checkScroll() {
+    const scrollPosition = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+
+    console.log('[scroll]', scrollPosition);
+    if (scrollPosition >= this.topPosToStartShowing) {
+      this.isShow = true;
+    } else {
+      this.isShow = false;
+    }
+  }
 
   constructor(private meta: Meta, private title: Title,
               private postService: PostService,
@@ -69,18 +84,19 @@ export class HomeComponent implements OnInit {
     this.postService.getPost().subscribe( data => {
       this.posts = data;
       localStorage.setItem('store2', JSON.stringify(data));
-      console.log('gotten post', this.posts);
+      // console.log('gotten post', this.posts);
     });
   }
 
-  
 
-  // getUsers() {
-  //   this.user.getUsers().subscribe( data => {
-  //     this.userList = data;
-  //     // console.log(this.userList);
-  //   });
-  // }
+  goToTop() {
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    });
+  }
+
 
 
 }

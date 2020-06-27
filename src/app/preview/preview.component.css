@@ -1,16 +1,52 @@
 .fly {
-    position: absolute;
-    top: 5px;
-    right: 5px
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+}
+
+.cover_photo {
+  position: absolute;
+  top: 5px;
+  right: 5px;
 }
 
 .delete {
-    width: 150px;
+  width: 150px;
 }
 
 .avatar {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    border: 5px solid black;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 5px solid black;
+}
+
+.avatar_holder {
+  position: relative;
+}
+
+.avatar_holder:hover > .edit_avatar {
+  display: grid;
+  opacity: 1;
+  overflow: hidden;
+}
+
+.edit_avatar {
+  position: absolute;
+  bottom: 5px;
+  background: rgba(51, 50, 50, 0.5);
+  width: 100%;
+  display: none;
+  padding: 2rem 2rem;
+  place-items: center;
+  transition: all 0.2s;
+  overflow: hidden;
+  border-bottom-left-radius: 80px;
+  border-bottom-right-radius: 80px;
+  
+}
+
+.edit_avatar .fas {
+  color: white;
+  text-align: center;
 }

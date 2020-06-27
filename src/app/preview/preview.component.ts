@@ -3,6 +3,7 @@
   import { UserService } from '../user.service';
   import { AuthsService } from '../auths.service';
   import { AngularFireAuth } from 'angularfire2/auth';
+  import { Title, Meta } from '@angular/platform-browser';
 
   @Component({
   selector: 'app-preview',
@@ -16,9 +17,19 @@ export class PreviewComponent implements OnInit {
   constructor(private afAuth: AngularFireAuth,
               private authService: AuthsService,
               private user: UserService,
+              private meta: Meta, private title: Title,
               private router: Router) {}
 
   ngOnInit() {
+
+    this.title.setTitle('Ng-bloggy | Profile preview');
+    this.meta.addTags([
+      { name: 'author', content: 'ng-bloggy'},
+      { name: 'description', content: 'Blog built and powerd by Angular on the FE.'},
+      { name: 'keywork', content: 'NG-bloggy, Blog, Angular Blog, Angular'},
+
+    ]);
+
     this.getUserDetails();
   }
 
