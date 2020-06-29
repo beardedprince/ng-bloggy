@@ -57,60 +57,60 @@ export class ProfileComponent implements OnInit {
 
 
 
-  uploadFile(event: any) {
-    if (event.target.files.length > 0) {
-      const file = event.target.files[0];
-      console.log('file', file);
-      this.profileForm.get('avatar').setValue(file);
-    }
-  }
-
-
-
-    assignFormData(form: FormGroup) {
-      const formData = new FormData();
-      Object.keys(form.controls).forEach(key => {
-        formData.append(key, form.get(key).value);
-      });
-      return formData;
-    }
-
-
-
-  // submitPost() {
-  //   const formData = this.assignFormData(this.profileForm);
-  //   console.log('form data ', formData);
-  //   this.user.createProfile(formData).subscribe(data => {
-  //     if (data) {
-  //       this.getResult = data;
-  //       this.success = false;
-  //       localStorage.setItem('data', JSON.stringify(data));
-  //       const get =  JSON.parse(localStorage.getItem('data'));
-  //       this.router.navigate(['/', 'dashboard', 'new-post', get._id]);
-  //     }
-  //   }, err => {
-  //     console.log(err);
-  //   });
+  // uploadFile(event: any) {
+  //   if (event.target.files.length > 0) {
+  //     const file = event.target.files[0];
+  //     console.log('file', file);
+  //     this.profileForm.get('avatar').setValue(file);
+  //   }
   // }
 
 
-  submit() {
-    console.log('refactor', this.profileForm.value);
-    this.createProfile(this.profileForm.value);
+
+  //   assignFormData(form: FormGroup) {
+  //     const formData = new FormData();
+  //     Object.keys(form.controls).forEach(key => {
+  //       formData.append(key, form.get(key).value);
+  //     });
+  //     return formData;
+  //   }
+
+
+
+  createProfile() {
+    // const formData = this.assignFormData(this.profileForm);
+    // console.log('form data ', formData);
+    this.user.createProfile(this.profileForm.value).subscribe(data => {
+      if (data) {
+        this.getResult = data;
+        this.success = false;
+        localStorage.setItem('data', JSON.stringify(data));
+        const get =  JSON.parse(localStorage.getItem('data'));
+        this.router.navigate(['/', 'dashboard', 'new-post', get._id]);
+      }
+    }, err => {
+      console.log(err);
+    });
   }
 
-  createProfile(payload: any) {
-    this.user.createProfile(payload).subscribe(
-      (res: any) => {
-        if (res) {
-          console.log(res);
-        }
-      },
-      (error: any) => {
-        console.log(error);
-      }
-    );
-  }
+
+  // submit() {
+  //   console.log('refactor', this.profileForm.value);
+  //   this.createProfile(this.profileForm.value);
+  // }
+
+  // createProfile(payload: any) {
+  //   this.user.createProfile(payload).subscribe(
+  //     (res: any) => {
+  //       if (res) {
+  //         console.log(res);
+  //       }
+  //     },
+  //     (error: any) => {
+  //       console.log(error);
+  //     }
+  //   );
+  // }
 
   giveAlert() {
     alert('please create a profile first');
