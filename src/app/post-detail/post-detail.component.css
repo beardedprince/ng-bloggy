@@ -5,3 +5,8 @@
 .username {
     cursor: pointer;
 }
+
+
+.info {
+    position: sticky;
+}

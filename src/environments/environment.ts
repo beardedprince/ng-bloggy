@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  // path: 'https://ng-bloggy.herokuapp.com/api',
-  path: 'http://localhost:3000/api',
+  path: 'https://ng-bloggy.herokuapp.com/api',
+  // path: 'http://localhost:3000/api',
   firebase: {
     apiKey: 'AIzaSyB8DCGq_-Yg0LYfMRVz82g9tSHVtF_oss0',
     authDomain: 'ng-auths.firebaseapp.com',
