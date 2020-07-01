@@ -20,6 +20,7 @@ export class PostDetailComponent implements OnInit {
   isSuccess = false;
   submitted = false;
   tag: any;
+  currentUrl: any;
 
   commentForm: FormGroup;
   constructor(private route: ActivatedRoute, private router: Router,
@@ -48,6 +49,8 @@ export class PostDetailComponent implements OnInit {
     // tslint:disable-next-line:no-string-literal
     this.postdetail = this.route.snapshot.data['postdetial']; // post detials gotten using resolvers
 
+    this.currentUrl = window.location.href;
+    console.log(this.currentUrl);
   }
 
 
